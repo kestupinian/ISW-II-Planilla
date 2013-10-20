@@ -109,6 +109,12 @@ public class creacionempleado extends javax.swing.JFrame {
 
         jTextField1.setEnabled(false);
 
+        txtapellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtapellidoKeyTyped(evt);
+            }
+        });
+
         jLabel7.setText("Apellido");
 
         jLabel8.setText("Correo electronico");
@@ -304,9 +310,9 @@ public class creacionempleado extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addGap(16, 16, 16)
                                 .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel7)
-                                .addGap(8, 8, 8)
+                                .addGap(15, 15, 15)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel4)
                                     .addComponent(ComboCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -472,6 +478,11 @@ public class creacionempleado extends javax.swing.JFrame {
       char c = evt.getKeyChar();
 if ((c<'a' || c>'z') && (c<'A' || c>'Z')) evt.consume();
     }//GEN-LAST:event_txtnombreKeyTyped
+
+    private void txtapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellidoKeyTyped
+ char c = evt.getKeyChar();
+if ((c<'a' || c>'z') && (c<'A' || c>'Z')) evt.consume();
+    }//GEN-LAST:event_txtapellidoKeyTyped
                                
    
 
