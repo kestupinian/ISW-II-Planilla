@@ -6,7 +6,7 @@ package Formularios;
 
 /**
  *
- * @author manuel
+ * @author Manuel
  */
 public class constanciarenta extends javax.swing.JFrame {
 
@@ -38,7 +38,7 @@ public class constanciarenta extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setText("Id");
 
@@ -130,7 +130,9 @@ public class constanciarenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+busqueda bus = new busqueda();
+bus.setLocationRelativeTo(null);
+bus.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -6,7 +6,7 @@ package Formularios;
 
 /**
  *
- * @author manuel
+ * @author Manuel
  */
 public class consultadeadelanto extends javax.swing.JFrame {
 
@@ -42,7 +42,7 @@ public class consultadeadelanto extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Consulta de Adelantos de Salario");
@@ -155,7 +155,9 @@ public class consultadeadelanto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+busqueda bus = new busqueda();
+bus.setLocationRelativeTo(null);
+bus.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

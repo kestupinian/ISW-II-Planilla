@@ -6,7 +6,7 @@ package Formularios;
 
 /**
  *
- * @author manuel
+ * @author Manuel
  */
 public class creacionempresa extends javax.swing.JFrame {
 
@@ -57,7 +57,7 @@ public class creacionempresa extends javax.swing.JFrame {
         jCheckBox2 = new javax.swing.JCheckBox();
         jTextField3 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel13.setText("N° Registro Fiscal");
 

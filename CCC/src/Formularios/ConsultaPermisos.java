@@ -41,7 +41,7 @@ public class ConsultaPermisos extends javax.swing.JFrame {
         txtApellidos = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Permisos");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -55,6 +55,11 @@ public class ConsultaPermisos extends javax.swing.JFrame {
         jTextField1.setBackground(new java.awt.Color(204, 204, 204));
 
         btnbuscarPermiso.setText("Buscar");
+        btnbuscarPermiso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscarPermisoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Desde");
 
@@ -68,6 +73,11 @@ public class ConsultaPermisos extends javax.swing.JFrame {
         });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Apellidos");
 
@@ -164,6 +174,16 @@ public class ConsultaPermisos extends javax.swing.JFrame {
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGenerarActionPerformed
+
+    private void btnbuscarPermisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarPermisoActionPerformed
+busqueda bus = new busqueda();
+bus.setLocationRelativeTo(null);
+bus.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_btnbuscarPermisoActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
 	/**
 	 * @param args the command line arguments

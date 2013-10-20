@@ -2,10 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package Formularios;
 
 /**
  *
- * @author Diego Hernandez
+ * @author Manuel
  */
 public class municipios extends javax.swing.JFrame {
 
@@ -41,7 +42,6 @@ public class municipios extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Mantenimiento Municipio");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("MANTENIMIENTO MUNICIPIO");

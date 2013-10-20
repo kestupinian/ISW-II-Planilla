@@ -6,6 +6,8 @@ package ccc;
 
 import Formularios.Inicio;
 
+
+
 /**
  *
  * @author manuel
@@ -19,6 +21,8 @@ public class CCC {
 		Inicio ini = new Inicio();
 		ini.setLocationRelativeTo(null);
 		ini.setVisible(true);
+		
+		
 
 		
     }

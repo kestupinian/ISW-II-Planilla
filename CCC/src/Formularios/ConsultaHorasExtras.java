@@ -17,6 +17,7 @@ public class ConsultaHorasExtras extends javax.swing.JFrame {
         initComponents();
     }
 
+	
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,7 +40,7 @@ public class ConsultaHorasExtras extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         DateHasta = new com.toedter.calendar.JDateChooser();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Horas Extras Registradas");
         setAlwaysOnTop(true);
 
@@ -63,6 +64,11 @@ public class ConsultaHorasExtras extends javax.swing.JFrame {
         btnGenerar.setText("Generar");
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Hasta");
 
@@ -132,9 +138,16 @@ public class ConsultaHorasExtras extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
-    
+busqueda bus = new busqueda();
+bus.setLocationRelativeTo(null);
+bus.setVisible(rootPaneCheckingEnabled);
 
     }//GEN-LAST:event_btnbuscarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+dispose();
+
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
