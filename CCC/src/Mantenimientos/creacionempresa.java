@@ -4,6 +4,8 @@
  */
 package Mantenimientos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Manuel
@@ -26,7 +28,7 @@ public class creacionempresa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField6 = new javax.swing.JTextField();
+        txtreg = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -38,14 +40,14 @@ public class creacionempresa extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox();
+        combodpto = new javax.swing.JComboBox();
+        txtdireccion = new javax.swing.JTextField();
+        txtnit = new javax.swing.JTextField();
+        combomun = new javax.swing.JComboBox();
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel15 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        txtempresa = new javax.swing.JTextField();
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         jCheckBox3 = new javax.swing.JCheckBox();
@@ -55,9 +57,15 @@ public class creacionempresa extends javax.swing.JFrame {
         jCheckBox5 = new javax.swing.JCheckBox();
         jButton2 = new javax.swing.JButton();
         jCheckBox2 = new javax.swing.JCheckBox();
-        jTextField3 = new javax.swing.JTextField();
+        txttel = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        txtreg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtregKeyTyped(evt);
+            }
+        });
 
         jLabel13.setText("N° Registro Fiscal");
 
@@ -82,15 +90,33 @@ public class creacionempresa extends javax.swing.JFrame {
 
         jLabel14.setText("Municipio");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combodpto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txtdireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtdireccionKeyTyped(evt);
+            }
+        });
+
+        txtnit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnitKeyTyped(evt);
+            }
+        });
+
+        combomun.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
 
         jCheckBox1.setText("PRIMER NIVEL");
 
         jLabel15.setText("Departamento");
 
         jButton1.setText("Modificar");
+
+        txtempresa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtempresaKeyTyped(evt);
+            }
+        });
 
         jRadioButton2.setText("Inactiva");
 
@@ -125,6 +151,12 @@ public class creacionempresa extends javax.swing.JFrame {
 
         jCheckBox2.setText("SEGUNDO NIVEL");
 
+        txttel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txttelKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,10 +184,10 @@ public class creacionempresa extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jTextField1)
-                                            .addComponent(jTextField8)
-                                            .addComponent(jTextField2)
-                                            .addComponent(jComboBox1, 0, 184, Short.MAX_VALUE)
-                                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(txtdireccion)
+                                            .addComponent(txtempresa)
+                                            .addComponent(combodpto, 0, 184, Short.MAX_VALUE)
+                                            .addComponent(combomun, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(74, 74, 74)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel13)
@@ -165,10 +197,10 @@ public class creacionempresa extends javax.swing.JFrame {
                                         .addGap(28, 28, 28)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jRadioButton2)
-                                            .addComponent(jTextField9)
-                                            .addComponent(jTextField6)
+                                            .addComponent(txtnit)
+                                            .addComponent(txtreg)
                                             .addComponent(jRadioButton1)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)))))
+                                            .addComponent(txttel, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)))))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(281, 281, 281)
@@ -192,12 +224,12 @@ public class creacionempresa extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txttel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(jLabel2)
@@ -207,9 +239,9 @@ public class creacionempresa extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel13)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtreg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,11 +256,11 @@ public class creacionempresa extends javax.swing.JFrame {
                                 .addGap(16, 16, 16))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(combomun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(combodpto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jRadioButton1)
@@ -260,8 +292,54 @@ public class creacionempresa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+if (txtempresa.getText().isEmpty())
+{
+		JOptionPane.showMessageDialog(null,"Favor escribir un nombre");
+}else if (txtdireccion.getText().isEmpty())
+{
+		JOptionPane.showMessageDialog(null,"Favor escribir una dirección");
+}else if (combomun.getSelectedItem()==null)
+{
+	JOptionPane.showMessageDialog(null,"Favor seleccionar un municipio");
+}else if(combodpto.getSelectedItem()==null)
+{
+	JOptionPane.showMessageDialog(null, "Favor Seleccionar un departamento");
+}else if (txttel.getText().isEmpty())
+{
+	JOptionPane.showMessageDialog(null, "Favor escribir el número de teléfono");
+}else if(txtnit.getText().isEmpty())
+{
+	JOptionPane.showMessageDialog(null, "Favor escribir el número de NIT");
+}else if(txtreg.getText().isEmpty())
+{
+JOptionPane.showMessageDialog(null, "Favor escribir el número de registro fiscal");
+}
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtempresaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtempresaKeyTyped
+char c = evt.getKeyChar();
+if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
+    }//GEN-LAST:event_txtempresaKeyTyped
+
+    private void txtdireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdireccionKeyTyped
+char c = evt.getKeyChar();
+if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
+    }//GEN-LAST:event_txtdireccionKeyTyped
+
+    private void txttelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttelKeyTyped
+char c = evt.getKeyChar();
+if (c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_txttelKeyTyped
+
+    private void txtnitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnitKeyTyped
+char c = evt.getKeyChar();
+if (c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_txtnitKeyTyped
+
+    private void txtregKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtregKeyTyped
+char c = evt.getKeyChar();
+if (c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_txtregKeyTyped
 
     /**
      * @param args the command line arguments
@@ -275,6 +353,8 @@ public class creacionempresa extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox combodpto;
+    private javax.swing.JComboBox combomun;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
@@ -282,8 +362,6 @@ public class creacionempresa extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -300,10 +378,10 @@ public class creacionempresa extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField txtdireccion;
+    private javax.swing.JTextField txtempresa;
+    private javax.swing.JTextField txtnit;
+    private javax.swing.JTextField txtreg;
+    private javax.swing.JTextField txttel;
     // End of variables declaration//GEN-END:variables
 }
