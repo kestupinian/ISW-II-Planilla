@@ -33,6 +33,11 @@ public class creacionempleado extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        buttonGroup6 = new javax.swing.ButtonGroup();
+        buttonGroup7 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -72,11 +77,11 @@ public class creacionempleado extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         txtsueldo = new javax.swing.JTextField();
         ComboEmpresa = new javax.swing.JComboBox();
-        jcnivel = new javax.swing.JComboBox();
-        jdfechadeing = new com.toedter.calendar.JDateChooser();
-        jccargo = new javax.swing.JComboBox();
+        comboNivel = new javax.swing.JComboBox();
+        DateIngreso = new com.toedter.calendar.JDateChooser();
+        comboCargo = new javax.swing.JComboBox();
         ComboCivil = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -86,6 +91,7 @@ public class creacionempleado extends javax.swing.JFrame {
         txtnombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Creación de Empleado");
         setBackground(new java.awt.Color(252, 251, 251));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -147,18 +153,18 @@ public class creacionempleado extends javax.swing.JFrame {
 
         jLabel24.setText("Estado");
 
-        ComboEmpresa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboEmpresa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
 
-        jcnivel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboNivel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
 
-        jccargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
 
         ComboCivil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a" }));
 
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
 
@@ -188,6 +194,12 @@ public class creacionempleado extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton3.setText("Consultar");
+
+        txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnombreKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -244,9 +256,9 @@ public class creacionempleado extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ComboEmpresa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jdfechadeing, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jcnivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jccargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(DateIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboNivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtsueldo)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +269,7 @@ public class creacionempleado extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -282,6 +294,12 @@ public class creacionempleado extends javax.swing.JFrame {
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(16, 16, 16)
@@ -331,18 +349,12 @@ public class creacionempleado extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel15)
-                                    .addComponent(ComboAfp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)
-                                .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(ComboAfp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jdfechadeing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DateIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel18))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -350,12 +362,12 @@ public class creacionempleado extends javax.swing.JFrame {
                             .addComponent(jLabel20))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jcnivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel21))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel22)
-                            .addComponent(jccargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -374,7 +386,7 @@ public class creacionempleado extends javax.swing.JFrame {
                     .addComponent(txtnup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnGuardar)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -389,50 +401,81 @@ public class creacionempleado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- if (txtnombre.getText().equals("")){
-	JOptionPane.showMessageDialog(null, "Ingrese nombre");
-        return;
-            } 
-        if (txtapellido.getText().equals("")){
-	JOptionPane.showMessageDialog(null, "Ingrese apellido");
-    return;
-    }//GEN-LAST:event_jButton1ActionPerformed
-if (ComboCivil.getSelectedItem().equals("Seleccionar"))
+    
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+ if (txtnombre.getText().equals(""))
 {
-	JOptionPane.showMessageDialog(null, "Favor ingresar un estado civil");
-return;}
-
-if (DateFecha.getDate()==null){
+	JOptionPane.showMessageDialog(null, "Ingrese nombre");
+} else if (txtapellido.getText().equals(""))
+{
+	JOptionPane.showMessageDialog(null, "Ingrese apellido");
+    
+ } else if (ComboCivil.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccione un estado civil");
+}else if (DateFecha.getDate()==null)
+{
 	JOptionPane.showMessageDialog(null,"Favor ingresar fecha de nacimiento");
-return;}
-
-	if (txttelefono.getText().equals("")){
+}else if (txttelefono.getText().equals(""))
+{
 	JOptionPane.showMessageDialog(null, "Ingrese numero de telefono");
-    return;
-    }        
-if (txtcorreo.getText().equals("")){
+}else if (txtcorreo.getText().equals(""))
+{
 	JOptionPane.showMessageDialog(null, "Ingrese dirección de correo");
-    return;
-    }        
-if (txtdireccion.getText().equals("")){
+}else if (txtdireccion.getText().equals(""))
+{
 	JOptionPane.showMessageDialog(null, "Ingrese dirección");
-    return;
-    }   
-if (txtdui.getText().equals("")){
+}else if (ComboMun.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccione municipio");
+}else if (ComboDepto.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccione Departamento");
+}else if (txtdui.getText().equals(""))
+{
 	JOptionPane.showMessageDialog(null, "Ingrese número de DUI");
-    return;
-    }        
-if (txtnit.getText().equals("")){
+}else if (txtnit.getText().equals(""))
+{
 	JOptionPane.showMessageDialog(null, "Ingrese número de NIT");
-    return;
-    }   
-if (txtisss.getText().equals("")){
+}else if (txtisss.getText().equals(""))
+{
 	JOptionPane.showMessageDialog(null, "Ingrese número de ISSS");
-    return;
-    }
-	}
+}else if (ComboAfp.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccione AFP");
+}else if (txtnup.getText().equals(""))
+{
+	JOptionPane.showMessageDialog(null, "Ingrese número de NUP");
+}else if (DateIngreso.getDate()==null)
+{
+	JOptionPane.showMessageDialog(null,"Favor ingresar fecha de ingreso");
+}else if (ComboEmpresa.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccione Empresa");
+}else if (comboNivel.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccione Nivel");
+}else if (comboCargo.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccione Cargo");
+}else if (txtsueldo.getText().equals(""))
+{
+	JOptionPane.showMessageDialog(null, "Ingrese el sueldo");
+}else 
+{
+	JOptionPane.showMessageDialog(null, "Datos guardados con éxito Empleado Creado");
+}
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
+    
+    private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
+      char c = evt.getKeyChar();
+if ((c<'a' || c>'z') && (c<'A' || c>'Z')) evt.consume();
+    }//GEN-LAST:event_txtnombreKeyTyped
+                               
+   
+
+    
     /**
      * @param args the command line arguments
      */
@@ -452,9 +495,17 @@ if (txtisss.getText().equals("")){
     private javax.swing.JComboBox ComboEmpresa;
     private javax.swing.JComboBox ComboMun;
     private com.toedter.calendar.JDateChooser DateFecha;
+    private com.toedter.calendar.JDateChooser DateIngreso;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton1;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.ButtonGroup buttonGroup6;
+    private javax.swing.ButtonGroup buttonGroup7;
+    private javax.swing.JComboBox comboCargo;
+    private javax.swing.JComboBox comboNivel;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -486,9 +537,6 @@ if (txtisss.getText().equals("")){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JComboBox jccargo;
-    private javax.swing.JComboBox jcnivel;
-    private com.toedter.calendar.JDateChooser jdfechadeing;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtcorreo;
     private javax.swing.JTextField txtdireccion;
