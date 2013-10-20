@@ -4,11 +4,15 @@
  */
 package Formularios;
 
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Manuel
  */
 public class ConsultaHorasExtras extends javax.swing.JFrame {
+	private Object JDateChooser;
 
     /**
      * Creates new form ConsultaHorasExtras
@@ -30,7 +34,7 @@ public class ConsultaHorasExtras extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
         btnbuscar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -50,7 +54,7 @@ public class ConsultaHorasExtras extends javax.swing.JFrame {
 
         jLabel3.setText("Nombre");
 
-        jTextField1.setEditable(false);
+        txtId.setEditable(false);
 
         btnbuscar.setText("Buscar");
         btnbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +66,11 @@ public class ConsultaHorasExtras extends javax.swing.JFrame {
         jLabel4.setText("Desde");
 
         btnGenerar.setText("Generar");
+        btnGenerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +80,8 @@ public class ConsultaHorasExtras extends javax.swing.JFrame {
         });
 
         jLabel5.setText("Hasta");
+
+        DateHasta.setOpaque(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,7 +100,7 @@ public class ConsultaHorasExtras extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -110,7 +121,7 @@ public class ConsultaHorasExtras extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -148,6 +159,21 @@ bus.setVisible(rootPaneCheckingEnabled);
 dispose();
 
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
+	if (txtnombre.getText().equals(""))
+	{
+		JOptionPane.showMessageDialog(null,"Favor ingresar empleado");
+	}
+	else if (DateDesde.getDate()==null) 
+	{
+		JOptionPane.showMessageDialog(null,"Ingreasar una fecha válida");
+	}
+	else if (DateHasta.getDate()==null)
+	{
+		JOptionPane.showMessageDialog(null,"Ingrese fecha de finalización");
+	}
+    }//GEN-LAST:event_btnGenerarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,7 +220,7 @@ dispose();
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 }
