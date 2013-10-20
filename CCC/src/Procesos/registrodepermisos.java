@@ -261,6 +261,9 @@ public class registrodepermisos extends javax.swing.JFrame {
 if(txtnombre.getText().isEmpty())
 {
 	JOptionPane.showMessageDialog(null, "Favor buscar un empleado");		
+}else if(ComboPermiso.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null,"Favor seleccionar un motivo de permiso");
 }else if (DateDesde.getDate()==null)
 {
 	JOptionPane.showMessageDialog(null, "Seleccionar una fecha de inicio");
