@@ -4,6 +4,8 @@
  */
 package Procesos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author manuel
@@ -30,7 +32,7 @@ public class registroprocuradurias extends javax.swing.JFrame {
         txtcantidad = new javax.swing.JTextField();
         btnmodificar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        Date = new com.toedter.calendar.JDateChooser();
         txtempresa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -97,6 +99,11 @@ public class registroprocuradurias extends javax.swing.JFrame {
         jLabel5.setText("Empresa");
 
         btnguardar.setText("Guardar");
+        btnguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnguardarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Apellido");
 
@@ -106,7 +113,6 @@ public class registroprocuradurias extends javax.swing.JFrame {
         jLabel3.setText("Nombre");
 
         txtnombre.setBackground(new java.awt.Color(240, 240, 240));
-        txtnombre.setEnabled(false);
 
         txtid.setBackground(new java.awt.Color(240, 240, 240));
         txtid.setEnabled(false);
@@ -133,7 +139,7 @@ public class registroprocuradurias extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(75, 75, 75)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                            .addComponent(Date, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                             .addComponent(txtempresa, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtapellido, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtnombre, javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,7 +186,7 @@ public class registroprocuradurias extends javax.swing.JFrame {
                     .addComponent(txtempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,6 +213,23 @@ public class registroprocuradurias extends javax.swing.JFrame {
         char c=evt.getKeyChar();
 		if(c<'0' || c>'9') evt.consume();
     }//GEN-LAST:event_txtcantidadKeyTyped
+
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+if (txtnombre.getText().isEmpty())
+{
+	JOptionPane.showMessageDialog(null, "Favor buscar un empleado");
+}else if (Date.getDate()==null)
+{
+	JOptionPane.showMessageDialog(null, "Favor colocar fecha");
+}else if (txtcantidad.getText().isEmpty())
+{
+	JOptionPane.showMessageDialog(null, "Favor ingresar una cantidad a descontar");
+}else 
+{
+	JOptionPane.showMessageDialog(null, "Descuento Registrado");
+}	
+
+    }//GEN-LAST:event_btnguardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,11 +266,11 @@ public class registroprocuradurias extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser Date;
     private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnmodificar;
     private javax.swing.JButton jButton4;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
