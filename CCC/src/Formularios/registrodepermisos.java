@@ -4,6 +4,8 @@
  */
 package Formularios;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Manuel
@@ -121,6 +123,11 @@ public class registrodepermisos extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         btnguardar.setText("Guardar");
+        btnguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnguardarActionPerformed(evt);
+            }
+        });
 
         btnmodificar.setText("Modificar");
 
@@ -251,6 +258,12 @@ public class registrodepermisos extends javax.swing.JFrame {
 char c = evt.getKeyChar();
 if ((c<'a' || c>'z') && (c<'A' || c>'Z')) evt.consume();
     }//GEN-LAST:event_txtcomentarioKeyTyped
+
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+if (txtcomentario.getText().equals(""))
+	JOptionPane.showMessageDialog(null, "Ingrese un comentario");
+return;
+    }//GEN-LAST:event_btnguardarActionPerformed
 
     /**
      * @param args the command line arguments
