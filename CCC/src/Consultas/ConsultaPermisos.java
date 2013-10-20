@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Formularios;
+package Consultas;
 
+import Procesos.busqueda;
 import javax.swing.JOptionPane;
 
 /**

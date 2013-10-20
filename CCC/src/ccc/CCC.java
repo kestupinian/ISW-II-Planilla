@@ -4,7 +4,7 @@
  */
 package ccc;
 
-import Formularios.Inicio;
+import Procesos.Inicio;
 
 
 

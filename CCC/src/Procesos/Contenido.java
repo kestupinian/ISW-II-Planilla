@@ -2,7 +2,20 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Formularios;
+package Procesos;
+
+import Consultas.constanciarenta;
+import Consultas.Constanciadesueldo;
+import Consultas.consultadeadelanto;
+import Consultas.ConsultaDescuentos;
+import Consultas.ConsultaPlanilla;
+import Consultas.ConsultaPermisos;
+import Consultas.ConsultaHorasExtras;
+import Mantenimientos.creacionempresa;
+import Mantenimientos.creacionempleado;
+import Mantenimientos.afp;
+import Mantenimientos.departamento;
+import Mantenimientos.municipios;
 
 
 
@@ -305,7 +318,7 @@ public class Contenido extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-FrmDescuentos desc = new FrmDescuentos();
+ConsultaDescuentos desc = new ConsultaDescuentos();
 desc.setLocationRelativeTo(null);
 desc.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jMenuItem8ActionPerformed

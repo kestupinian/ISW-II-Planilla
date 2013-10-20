@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Formularios;
+package Procesos;
 
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;

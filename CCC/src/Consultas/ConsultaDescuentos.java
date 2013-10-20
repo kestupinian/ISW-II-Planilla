@@ -2,20 +2,21 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Formularios;
+package Consultas;
 
+import Procesos.busqueda;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Manuel
  */
-public class FrmDescuentos extends javax.swing.JFrame {
+public class ConsultaDescuentos extends javax.swing.JFrame {
 
 	/**
-	 * Creates new form FrmDescuentos
+	 * Creates new form ConsultaDescuentos
 	 */
-	public FrmDescuentos() {
+	public ConsultaDescuentos() {
 		initComponents();
 	}
 
@@ -191,7 +192,7 @@ if (txtnombre.getText().isEmpty())
 		
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new FrmDescuentos().setVisible(true);
+				new ConsultaDescuentos().setVisible(true);
 			}
 		});
 	}

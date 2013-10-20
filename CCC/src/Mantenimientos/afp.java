@@ -1,4 +1,4 @@
-package Formularios;
+package Mantenimientos;
 
 import javax.swing.JOptionPane;
 
