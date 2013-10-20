@@ -4,6 +4,8 @@
  */
 package Formularios;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Manuel
@@ -33,13 +35,13 @@ public class ConsultaPermisos extends javax.swing.JFrame {
         btnbuscarPermiso = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        DateDesde = new com.toedter.calendar.JDateChooser();
+        DateHasta = new com.toedter.calendar.JDateChooser();
         btnGenerar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtApellidos = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtnombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Permisos");
@@ -84,9 +86,6 @@ public class ConsultaPermisos extends javax.swing.JFrame {
         txtApellidos.setEditable(false);
         txtApellidos.setBackground(new java.awt.Color(204, 204, 204));
 
-        jTextField3.setEditable(false);
-        jTextField3.setBackground(new java.awt.Color(204, 204, 204));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,12 +94,11 @@ public class ConsultaPermisos extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnbuscarPermiso)
-                        .addGap(44, 44, 44)
+                        .addGap(50, 50, 50)
                         .addComponent(btnGenerar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(48, 48, 48)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -110,7 +108,7 @@ public class ConsultaPermisos extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(29, 29, 29)
-                                        .addComponent(jTextField3))
+                                        .addComponent(txtnombre))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
@@ -127,10 +125,15 @@ public class ConsultaPermisos extends javax.swing.JFrame {
                                     .addComponent(jLabel6))
                                 .addGap(29, 29, 29)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtApellidos))))
-                        .addGap(117, 117, 117))))
+                                    .addComponent(txtApellidos)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(DateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(DateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnbuscarPermiso)
+                        .addGap(34, 34, 34))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,10 +144,11 @@ public class ConsultaPermisos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3))
+                    .addComponent(txtnombre)
+                    .addComponent(btnbuscarPermiso))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
@@ -153,26 +157,34 @@ public class ConsultaPermisos extends javax.swing.JFrame {
                         .addGap(13, 13, 13)
                         .addComponent(txtApellidos)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(DateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGenerar)
-                    .addComponent(btnSalir)
-                    .addComponent(btnbuscarPermiso))
-                .addGap(54, 54, 54))
+                    .addComponent(btnSalir))
+                .addGap(44, 44, 44))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
-        // TODO add your handling code here:
+if (txtnombre.getText().isEmpty())
+	{
+		JOptionPane.showMessageDialog(null,"Favor buscar un empleado");
+}else if (DateDesde.getDate()==null)
+	{
+		JOptionPane.showMessageDialog(null,"Favor ingresar una fecha inicial");
+}else if (DateHasta.getDate()==null)
+	{
+		JOptionPane.showMessageDialog(null,"Favor ingrese una fecha fin");
+	}
     }//GEN-LAST:event_btnGenerarActionPerformed
 
     private void btnbuscarPermisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarPermisoActionPerformed
@@ -220,11 +232,11 @@ System.exit(0);
 		});
 	}
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser DateDesde;
+    private com.toedter.calendar.JDateChooser DateHasta;
     private javax.swing.JButton btnGenerar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnbuscarPermiso;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -232,7 +244,7 @@ System.exit(0);
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 }
