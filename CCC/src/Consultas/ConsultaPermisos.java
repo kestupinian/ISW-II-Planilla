@@ -195,7 +195,7 @@ bus.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnbuscarPermisoActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-System.exit(0);
+dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
 	/**
