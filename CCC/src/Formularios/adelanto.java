@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package crear_planilla;
+package Formularios;
 
 import java.awt.Toolkit;
 
