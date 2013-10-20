@@ -36,8 +36,8 @@ public class registrodepermisos extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        DateDesde = new com.toedter.calendar.JDateChooser();
+        DateHasta = new com.toedter.calendar.JDateChooser();
         jTextField1 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
@@ -45,7 +45,7 @@ public class registrodepermisos extends javax.swing.JFrame {
         txtempresa = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        cmbpermiso = new javax.swing.JComboBox();
+        ComboPermiso = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtcomentario = new javax.swing.JTextArea();
@@ -80,7 +80,7 @@ public class registrodepermisos extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("SISTEMA DE CONTROL DE PLANILLA");
 
-        txtnombre.setEnabled(false);
+        txtnombre.setBackground(new java.awt.Color(255, 255, 255));
 
         txtapellido.setEnabled(false);
 
@@ -91,10 +91,10 @@ public class registrodepermisos extends javax.swing.JFrame {
         jLabel10.setText("Permiso");
         jLabel10.setToolTipText("");
 
-        cmbpermiso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Vacación", "Incapacidad", "Maternidad", "Matrimonio" }));
-        cmbpermiso.addActionListener(new java.awt.event.ActionListener() {
+        ComboPermiso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Vacación", "Incapacidad", "Maternidad", "Matrimonio" }));
+        ComboPermiso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbpermisoActionPerformed(evt);
+                ComboPermisoActionPerformed(evt);
             }
         });
 
@@ -185,15 +185,15 @@ public class registrodepermisos extends javax.swing.JFrame {
                                                         .addComponent(jLabel10)))
                                                 .addGap(44, 44, 44)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(cmbpermiso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                                    .addComponent(DateDesde, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                                                    .addComponent(DateHasta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(ComboPermiso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                                     .addGap(18, 18, 18)
                                     .addComponent(jButton1))))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(43, 43, 43)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +208,7 @@ public class registrodepermisos extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtid)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -224,20 +224,20 @@ public class registrodepermisos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addComponent(cmbpermiso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboPermiso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnguardar)
                     .addComponent(btnmodificar)
@@ -250,19 +250,27 @@ public class registrodepermisos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbpermisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbpermisoActionPerformed
+    private void ComboPermisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboPermisoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbpermisoActionPerformed
+    }//GEN-LAST:event_ComboPermisoActionPerformed
 
     private void txtcomentarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcomentarioKeyTyped
-char c = evt.getKeyChar();
-if ((c<'a' || c>'z') && (c<'A' || c>'Z')) evt.consume();
     }//GEN-LAST:event_txtcomentarioKeyTyped
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
-if (txtcomentario.getText().equals(""))
+if(txtnombre.getText().isEmpty())
+{
+	JOptionPane.showMessageDialog(null, "Favor buscar un empleado");		
+}else if (DateDesde.getDate()==null)
+{
+	JOptionPane.showMessageDialog(null, "Seleccionar una fecha de inicio");
+}else if (DateHasta.getDate()==null)
+{
+	JOptionPane.showMessageDialog(null, "Seleccionar una fecha fin");
+}else if (txtcomentario.getText().equals(""))
+{
 	JOptionPane.showMessageDialog(null, "Ingrese un comentario");
-return;
+}
     }//GEN-LAST:event_btnguardarActionPerformed
 
     /**
@@ -300,13 +308,13 @@ return;
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox ComboPermiso;
+    private com.toedter.calendar.JDateChooser DateDesde;
+    private com.toedter.calendar.JDateChooser DateHasta;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnmodificar;
-    private javax.swing.JComboBox cmbpermiso;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
