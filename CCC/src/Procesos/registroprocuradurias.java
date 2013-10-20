@@ -4,6 +4,7 @@
  */
 package Procesos;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,10 +13,9 @@ import javax.swing.JOptionPane;
  */
 public class registroprocuradurias extends javax.swing.JFrame {
 
-    /**
-     * Creates new form registroprocuradurias
-     */
-    public registroprocuradurias() {
+	
+	
+	public registroprocuradurias() {
         initComponents();
     }
 
@@ -210,8 +210,10 @@ public class registroprocuradurias extends javax.swing.JFrame {
     }//GEN-LAST:event_txtapellidoActionPerformed
 
     private void txtcantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcantidadKeyTyped
-        char c=evt.getKeyChar();
-		if(c<'0' || c>'9') evt.consume();
+       char car = evt.getKeyChar();
+    if((car<'0' || car>'9') && (car!=(char) KeyEvent.VK_MINUS)){
+  evt.consume();
+	}
     }//GEN-LAST:event_txtcantidadKeyTyped
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
@@ -235,7 +237,8 @@ if (txtnombre.getText().isEmpty())
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+       		
+		/* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
