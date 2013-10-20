@@ -298,12 +298,12 @@ if (txtempresa.getText().isEmpty())
 }else if (txtdireccion.getText().isEmpty())
 {
 		JOptionPane.showMessageDialog(null,"Favor escribir una dirección");
-}else if (combomun.getSelectedItem()==null)
+}else if (combomun.getSelectedItem().equals("Seleccionar"))
 {
 	JOptionPane.showMessageDialog(null,"Favor seleccionar un municipio");
-}else if(combodpto.getSelectedItem()==null)
+}else if(combodpto.getSelectedItem().equals("Seleccionar"))
 {
-	JOptionPane.showMessageDialog(null, "Favor Seleccionar un departamento");
+	JOptionPane.showMessageDialog(null, "Favor seleccionar un departamento");
 }else if (txttel.getText().isEmpty())
 {
 	JOptionPane.showMessageDialog(null, "Favor escribir el número de teléfono");
