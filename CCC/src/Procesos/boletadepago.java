@@ -4,6 +4,8 @@
  */
 package Procesos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author manuel
@@ -31,18 +33,18 @@ public class boletadepago extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        Dateinicio = new com.toedter.calendar.JDateChooser();
+        Datefin = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         btngenera = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        Comboplanilla = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Boleta de Pago");
 
-        jLabel1.setText("Fecha");
+        jLabel1.setText("Seleccione fecha");
 
         jLabel2.setText("Desde");
 
@@ -60,7 +62,7 @@ public class boletadepago extends javax.swing.JFrame {
 
         jLabel5.setText("Tipo de planilla");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Quincenal", "Mensual" }));
+        Comboplanilla.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Quincenal", "Mensual" }));
 
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -76,23 +78,23 @@ public class boletadepago extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
+                        .addGap(119, 119, 119)
                         .addComponent(btngenera)
-                        .addGap(50, 50, 50)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel2))
-                            .addComponent(jLabel5))
-                        .addGap(29, 29, 29)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel1))
+                        .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(Datefin, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Dateinicio, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                            .addComponent(Comboplanilla, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addComponent(jLabel4)))
@@ -106,14 +108,14 @@ public class boletadepago extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Comboplanilla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Dateinicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Datefin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -131,8 +133,14 @@ public class boletadepago extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btngeneraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngeneraActionPerformed
-        // TODO add your handling code here:
+	if (Comboplanilla.getSelectedItem().equals("Seleccionar"))
+{	JOptionPane.showMessageDialog(null, "Favor seleccione un tipo de planilla");
+    }          else if (Dateinicio.getDate()==null)
+            JOptionPane.showMessageDialog(null, "Favor seleccione fecha de inicio");
+        else if (Datefin.getDate()==null)
+            JOptionPane.showMessageDialog(null, "Favor seleccione fecha de fin");
     }//GEN-LAST:event_btngeneraActionPerformed
+
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 System.exit(1);
@@ -173,11 +181,11 @@ System.exit(1);
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox Comboplanilla;
+    private com.toedter.calendar.JDateChooser Datefin;
+    private com.toedter.calendar.JDateChooser Dateinicio;
     private javax.swing.JButton btngenera;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

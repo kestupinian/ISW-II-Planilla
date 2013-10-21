@@ -7,6 +7,7 @@ package Mantenimientos;
 import Procesos.busqueda;
 import javax.swing.JOptionPane;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -80,10 +81,10 @@ public class creacionempleado extends javax.swing.JFrame {
         txtnit = new javax.swing.JFormattedTextField();
         txtisss = new javax.swing.JFormattedTextField();
         txtnup = new javax.swing.JFormattedTextField();
-        txtsueldo = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
         ButtonActivo = new javax.swing.JRadioButton();
         ButtonInactivo = new javax.swing.JRadioButton();
+        txtsueldo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Creación de Empleado");
@@ -189,6 +190,11 @@ public class creacionempleado extends javax.swing.JFrame {
             }
         });
 
+        txtnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnombreActionPerformed(evt);
+            }
+        });
         txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtnombreKeyTyped(evt);
@@ -240,13 +246,6 @@ public class creacionempleado extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        txtsueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
-        txtsueldo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtsueldoKeyTyped(evt);
-            }
-        });
-
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Estado"));
 
         GrupoEstado.add(ButtonActivo);
@@ -280,6 +279,17 @@ public class creacionempleado extends javax.swing.JFrame {
                 .addComponent(ButtonInactivo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        txtsueldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsueldoActionPerformed(evt);
+            }
+        });
+        txtsueldo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtsueldoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -549,7 +559,7 @@ if ((c<'a' || c>'z') && (c<'A' || c>'Z')&& (c<' ' || c>' ')) evt.consume();
 
     private void txtapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellidoKeyTyped
  char c = evt.getKeyChar();
-if ((c<'a' || c>'z') && (c<'A' || c>'Z')) evt.consume();
+if ((c<'a' || c>'z') && (c<'A' || c>'Z')&& (c<' ' || c>' ')) evt.consume();
     }//GEN-LAST:event_txtapellidoKeyTyped
 
     private void txtDuiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuiKeyTyped
@@ -567,16 +577,40 @@ if ((c<'0' || c>'9')) evt.consume();
 if ((c<'0' || c>'9')) evt.consume();
     }//GEN-LAST:event_txtisssKeyTyped
 
-    private void txtsueldoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsueldoKeyTyped
-        char c = evt.getKeyChar();
-if ((c<'0' || c>'9')) evt.consume();
-    }//GEN-LAST:event_txtsueldoKeyTyped
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 busqueda bus= new busqueda ();
 bus.setLocationRelativeTo(null);
 bus.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombreActionPerformed
+
+    private void txtsueldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsueldoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtsueldoActionPerformed
+
+    private void txtsueldoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsueldoKeyTyped
+        if(txtsueldo.getText().length()>=6) evt.consume();
+
+        char tecla;
+        tecla=evt.getKeyChar();
+        String cod= txtsueldo.getText();
+        int punto = cod.indexOf(".")+1;
+
+        if(punto==0){
+            if(!Character.isDigit(tecla)&&tecla!= KeyEvent.VK_BACK_SPACE&&tecla!=KeyEvent.VK_PERIOD){
+                evt.consume();
+                getToolkit().beep();
+            }
+        }else{
+            if(!Character.isDigit(tecla)&&tecla!=KeyEvent.VK_BACK_SPACE){
+                evt.consume();
+                getToolkit().beep();
+                }
+            }
+    }//GEN-LAST:event_txtsueldoKeyTyped
                                
    
 
@@ -644,7 +678,7 @@ bus.setVisible(rootPaneCheckingEnabled);
     private javax.swing.JFormattedTextField txtnit;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JFormattedTextField txtnup;
-    private javax.swing.JFormattedTextField txtsueldo;
+    private javax.swing.JTextField txtsueldo;
     private javax.swing.JFormattedTextField txttelefono;
     // End of variables declaration//GEN-END:variables
 }
