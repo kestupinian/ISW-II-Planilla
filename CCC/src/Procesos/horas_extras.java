@@ -51,6 +51,7 @@ public class horas_extras extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Horas Extras");
 
         jLabel1.setText("Id Empleado:");
 
