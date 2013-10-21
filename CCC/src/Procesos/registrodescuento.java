@@ -4,6 +4,8 @@
  */
 package Procesos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author manuel
@@ -44,10 +46,10 @@ public class registrodescuento extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         txtempresa = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        Date = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        combomotivo = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
         btnguardar = new javax.swing.JButton();
@@ -94,6 +96,11 @@ public class registrodescuento extends javax.swing.JFrame {
                 txtcantidadActionPerformed(evt);
             }
         });
+        txtcantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcantidadKeyTyped(evt);
+            }
+        });
 
         btnmodificar.setText("Modificar");
 
@@ -121,19 +128,34 @@ public class registrodescuento extends javax.swing.JFrame {
         txtempresa.setBackground(new java.awt.Color(240, 240, 240));
         txtempresa.setEnabled(false);
 
+        Date.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DateKeyTyped(evt);
+            }
+        });
+
         jLabel4.setText("Apellido");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("SISTEMA DE CONTROL DE PLANILLA");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Llegada tarde", "No porta el uniforme", "Llega en estado ebrio" }));
+        combomotivo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Llegada tarde", "No porta el uniforme", "Llega en estado ebrio" }));
 
         jLabel3.setText("Nombre");
 
         txtnombre.setBackground(new java.awt.Color(240, 240, 240));
-        txtnombre.setEnabled(false);
+        txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnombreKeyTyped(evt);
+            }
+        });
 
         btnguardar.setText("Guardar");
+        btnguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnguardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,7 +192,7 @@ public class registrodescuento extends javax.swing.JFrame {
                                         .addComponent(txtnombre, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(txtapellido)
                                         .addComponent(txtempresa)
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                                        .addComponent(Date, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                                         .addComponent(txtcantidad, javax.swing.GroupLayout.Alignment.TRAILING))
                                     .addGap(16, 16, 16)
                                     .addComponent(btnbuscar))
@@ -184,7 +206,7 @@ public class registrodescuento extends javax.swing.JFrame {
                             .addComponent(jButton4)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(118, 118, 118)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(combomotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -213,7 +235,7 @@ public class registrodescuento extends javax.swing.JFrame {
                     .addComponent(txtempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +247,7 @@ public class registrodescuento extends javax.swing.JFrame {
                         .addComponent(jLabel9))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(combomotivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
@@ -250,6 +272,40 @@ public class registrodescuento extends javax.swing.JFrame {
     private void txtcantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcantidadActionPerformed
+
+    private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
+char c = evt.getKeyChar();
+if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
+    }//GEN-LAST:event_txtnombreKeyTyped
+
+    private void DateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DateKeyTyped
+if (Date.getDate()==null)
+	{
+		JOptionPane.showMessageDialog(null,"Ingrese fecha");
+	}
+    }//GEN-LAST:event_DateKeyTyped
+
+    private void txtcantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcantidadKeyTyped
+ char c = evt.getKeyChar();
+if ((c<'0' || c>'9')) evt.consume();
+    }//GEN-LAST:event_txtcantidadKeyTyped
+
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+if(txtnombre.getText().isEmpty())
+{
+JOptionPane.showMessageDialog(null, "Favor buscar un empleado");
+}else if (Date.getDate()==null)
+{
+JOptionPane.showMessageDialog(null,"Favor ingrese una fecha");
+}else if (txtcantidad.getText().isEmpty())
+{
+JOptionPane.showMessageDialog(null,"Digite una cantidad");
+}else if (combomotivo.getSelectedItem().equals("Seleccionar"))
+{
+JOptionPane.showMessageDialog(null,"Favor seleccione una opción");
+}else
+	JOptionPane.showMessageDialog(null, "Descuento Registrado");
+    }//GEN-LAST:event_btnguardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,12 +342,12 @@ public class registrodescuento extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser Date;
     private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnmodificar;
+    private javax.swing.JComboBox combomotivo;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
