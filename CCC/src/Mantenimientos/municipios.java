@@ -65,7 +65,7 @@ public class municipios extends javax.swing.JFrame {
             }
         });
 
-        comboPais.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboPais.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "El Salvador", "Item 2", "Item 3", "Item 4" }));
 
         combodpto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 1", "Item 2", "Item 3", "Item 4" }));
 
