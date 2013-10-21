@@ -175,7 +175,7 @@ int codigo = Integer.parseInt(this.txtcodigo.getText());
 String nombre = this.txtnombre.getText();
 
 c.GUARDAR(codigo, nombre);
-JOptionPane.showMessageDialog(null,"Informacion Almacenada");
+JOptionPane.showMessageDialog(null,"Informacion Registrada");
 		
 if(txtnombre.getText().isEmpty())
  {
