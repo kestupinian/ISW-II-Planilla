@@ -45,8 +45,6 @@ public class creacionempleado extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        txttelefono = new javax.swing.JTextField();
-        txtcorreo = new javax.swing.JTextField();
         DateFecha = new com.toedter.calendar.JDateChooser();
         txtapellido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -62,8 +60,6 @@ public class creacionempleado extends javax.swing.JFrame {
         txtdireccion = new javax.swing.JTextField();
         ComboMun = new javax.swing.JComboBox();
         ComboDepto = new javax.swing.JComboBox();
-        txtdui = new javax.swing.JTextField();
-        txtnit = new javax.swing.JTextField();
         txtisss = new javax.swing.JTextField();
         txtnup = new javax.swing.JTextField();
         ComboAfp = new javax.swing.JComboBox();
@@ -89,6 +85,10 @@ public class creacionempleado extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         txtnombre = new javax.swing.JTextField();
+        txtDui = new javax.swing.JFormattedTextField();
+        txttelefono = new javax.swing.JFormattedTextField();
+        txtcorreo = new javax.swing.JTextField();
+        txtnit = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Creación de Empleado");
@@ -207,6 +207,29 @@ public class creacionempleado extends javax.swing.JFrame {
             }
         });
 
+        try {
+            txtDui.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtDui.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDuiKeyTyped(evt);
+            }
+        });
+
+        try {
+            txttelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            txtnit.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-######-###-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -233,20 +256,20 @@ public class creacionempleado extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField1)
-                    .addComponent(txttelefono)
-                    .addComponent(txtcorreo)
                     .addComponent(DateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                     .addComponent(txtapellido)
                     .addComponent(txtdireccion)
                     .addComponent(ComboMun, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ComboDepto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtdui)
-                    .addComponent(txtnit)
                     .addComponent(txtisss)
                     .addComponent(txtnup)
                     .addComponent(ComboAfp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ComboCivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtnombre))
+                    .addComponent(txtnombre)
+                    .addComponent(txtDui)
+                    .addComponent(txttelefono)
+                    .addComponent(txtcorreo)
+                    .addComponent(txtnit))
                 .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19)
@@ -322,12 +345,12 @@ public class creacionempleado extends javax.swing.JFrame {
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))
+                                    .addComponent(jLabel6)
+                                    .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8))
+                                    .addComponent(jLabel8)
+                                    .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel9)
@@ -341,14 +364,14 @@ public class creacionempleado extends javax.swing.JFrame {
                                     .addComponent(jLabel11)
                                     .addComponent(ComboDepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel12)
-                                    .addComponent(txtdui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel13)
                                     .addComponent(txtnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(9, 9, 9)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel14)
                                     .addComponent(txtisss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -397,7 +420,7 @@ public class creacionempleado extends javax.swing.JFrame {
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -437,7 +460,7 @@ public class creacionempleado extends javax.swing.JFrame {
 }else if (ComboDepto.getSelectedItem().equals("Seleccionar"))
 {
 	JOptionPane.showMessageDialog(null, "Favor seleccione Departamento");
-}else if (txtdui.getText().equals(""))
+}else if (txtDui.getText().equals(""))
 {
 	JOptionPane.showMessageDialog(null, "Ingrese número de DUI");
 }else if (txtnit.getText().equals(""))
@@ -483,6 +506,11 @@ if ((c<'a' || c>'z') && (c<'A' || c>'Z')) evt.consume();
  char c = evt.getKeyChar();
 if ((c<'a' || c>'z') && (c<'A' || c>'Z')) evt.consume();
     }//GEN-LAST:event_txtapellidoKeyTyped
+
+    private void txtDuiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuiKeyTyped
+         char c = evt.getKeyChar();
+if ((c<'0' || c>'9')) evt.consume();
+    }//GEN-LAST:event_txtDuiKeyTyped
                                
    
 
@@ -548,15 +576,15 @@ if ((c<'a' || c>'z') && (c<'A' || c>'Z')) evt.consume();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JFormattedTextField txtDui;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtcorreo;
     private javax.swing.JTextField txtdireccion;
-    private javax.swing.JTextField txtdui;
     private javax.swing.JTextField txtisss;
-    private javax.swing.JTextField txtnit;
+    private javax.swing.JFormattedTextField txtnit;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtnup;
     private javax.swing.JTextField txtsueldo;
-    private javax.swing.JTextField txttelefono;
+    private javax.swing.JFormattedTextField txttelefono;
     // End of variables declaration//GEN-END:variables
 }
