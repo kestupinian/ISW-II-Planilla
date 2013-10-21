@@ -304,7 +304,7 @@ JOptionPane.showMessageDialog(null,"Digite una cantidad");
 {
 JOptionPane.showMessageDialog(null,"Favor seleccione una opción");
 }else
-	JOptionPane.showMessageDialog(null, "Descuento Registrado");
+	JOptionPane.showMessageDialog(null, "Descuento aplicado");
     }//GEN-LAST:event_btnguardarActionPerformed
 
     /**
