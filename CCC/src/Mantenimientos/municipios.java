@@ -4,6 +4,7 @@
  */
 package Mantenimientos;
 
+import Clases.Municipio;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,7 +34,7 @@ public class municipios extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtcodigo = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
         comboPais = new javax.swing.JComboBox();
         combodpto = new javax.swing.JComboBox();
@@ -56,8 +57,6 @@ public class municipios extends javax.swing.JFrame {
         jLabel4.setText("PAIS:");
 
         jLabel5.setText("DEPARTAMENTO:");
-
-        jTextField1.setEditable(false);
 
         txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -121,7 +120,7 @@ public class municipios extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
+                            .addComponent(txtcodigo)
                             .addComponent(txtnombre)
                             .addComponent(comboPais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(combodpto, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -138,7 +137,7 @@ public class municipios extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -170,7 +169,15 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
     }//GEN-LAST:event_txtnombreKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- if(txtnombre.getText().isEmpty())
+Municipio c = new Municipio();
+
+int codigo = Integer.parseInt(this.txtcodigo.getText());
+String nombre = this.txtnombre.getText();
+
+c.GUARDAR(codigo, nombre);
+JOptionPane.showMessageDialog(null,"Informacion Registrada");
+		
+if(txtnombre.getText().isEmpty())
  {
 		JOptionPane.showMessageDialog(null,"Favor ingrese un nombre");
  }else if(comboPais.getSelectedItem().equals("Seleccionar"))
@@ -230,7 +237,7 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtcodigo;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 }
