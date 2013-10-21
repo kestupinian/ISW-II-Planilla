@@ -189,6 +189,11 @@ public class creacionempleado extends javax.swing.JFrame {
             }
         });
 
+        txtnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnombreActionPerformed(evt);
+            }
+        });
         txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtnombreKeyTyped(evt);
@@ -241,6 +246,11 @@ public class creacionempleado extends javax.swing.JFrame {
         }
 
         txtsueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        txtsueldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsueldoActionPerformed(evt);
+            }
+        });
         txtsueldo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtsueldoKeyTyped(evt);
@@ -549,7 +559,7 @@ if ((c<'a' || c>'z') && (c<'A' || c>'Z')&& (c<' ' || c>' ')) evt.consume();
 
     private void txtapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellidoKeyTyped
  char c = evt.getKeyChar();
-if ((c<'a' || c>'z') && (c<'A' || c>'Z')) evt.consume();
+if ((c<'a' || c>'z') && (c<'A' || c>'Z')&& (c<' ' || c>' ')) evt.consume();
     }//GEN-LAST:event_txtapellidoKeyTyped
 
     private void txtDuiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuiKeyTyped
@@ -569,6 +579,7 @@ if ((c<'0' || c>'9')) evt.consume();
 
     private void txtsueldoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsueldoKeyTyped
         char c = evt.getKeyChar();
+        if(txtsueldo.getText().length()>=6) evt.consume();
 if ((c<'0' || c>'9')) evt.consume();
     }//GEN-LAST:event_txtsueldoKeyTyped
 
@@ -577,6 +588,14 @@ busqueda bus= new busqueda ();
 bus.setLocationRelativeTo(null);
 bus.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtsueldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsueldoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtsueldoActionPerformed
+
+    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombreActionPerformed
                                
    
 
