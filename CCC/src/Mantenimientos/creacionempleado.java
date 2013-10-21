@@ -4,6 +4,7 @@
  */
 package Mantenimientos;
 
+import Procesos.busqueda;
 import javax.swing.JOptionPane;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
@@ -31,13 +32,7 @@ public class creacionempleado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
-        buttonGroup4 = new javax.swing.ButtonGroup();
-        buttonGroup5 = new javax.swing.ButtonGroup();
-        buttonGroup6 = new javax.swing.ButtonGroup();
-        buttonGroup7 = new javax.swing.ButtonGroup();
+        GrupoEstado = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -60,8 +55,6 @@ public class creacionempleado extends javax.swing.JFrame {
         txtdireccion = new javax.swing.JTextField();
         ComboMun = new javax.swing.JComboBox();
         ComboDepto = new javax.swing.JComboBox();
-        txtisss = new javax.swing.JTextField();
-        txtnup = new javax.swing.JTextField();
         ComboAfp = new javax.swing.JComboBox();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -70,8 +63,6 @@ public class creacionempleado extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        txtsueldo = new javax.swing.JTextField();
         ComboEmpresa = new javax.swing.JComboBox();
         comboNivel = new javax.swing.JComboBox();
         DateIngreso = new com.toedter.calendar.JDateChooser();
@@ -79,8 +70,6 @@ public class creacionempleado extends javax.swing.JFrame {
         ComboCivil = new javax.swing.JComboBox();
         btnGuardar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
@@ -89,6 +78,12 @@ public class creacionempleado extends javax.swing.JFrame {
         txttelefono = new javax.swing.JFormattedTextField();
         txtcorreo = new javax.swing.JTextField();
         txtnit = new javax.swing.JFormattedTextField();
+        txtisss = new javax.swing.JFormattedTextField();
+        txtnup = new javax.swing.JFormattedTextField();
+        txtsueldo = new javax.swing.JFormattedTextField();
+        jPanel1 = new javax.swing.JPanel();
+        ButtonActivo = new javax.swing.JRadioButton();
+        ButtonInactivo = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Creación de Empleado");
@@ -157,8 +152,6 @@ public class creacionempleado extends javax.swing.JFrame {
 
         jLabel23.setText("Sueldo");
 
-        jLabel24.setText("Estado");
-
         ComboEmpresa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
 
         comboNivel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
@@ -176,16 +169,6 @@ public class creacionempleado extends javax.swing.JFrame {
 
         jButton2.setText("Modificar");
 
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Activo");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
-
-        jRadioButton2.setText("Inactivo");
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -199,7 +182,12 @@ public class creacionempleado extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton3.setText("Consultar");
+        jButton3.setText("Buscar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -229,6 +217,69 @@ public class creacionempleado extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtnit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnitKeyTyped(evt);
+            }
+        });
+
+        try {
+            txtisss.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtisss.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtisssKeyTyped(evt);
+            }
+        });
+
+        try {
+            txtnup.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("############")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        txtsueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        txtsueldo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtsueldoKeyTyped(evt);
+            }
+        });
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Estado"));
+
+        GrupoEstado.add(ButtonActivo);
+        ButtonActivo.setSelected(true);
+        ButtonActivo.setText("Activo");
+        ButtonActivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonActivoActionPerformed(evt);
+            }
+        });
+
+        GrupoEstado.add(ButtonInactivo);
+        ButtonInactivo.setText("Inactivo");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(99, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ButtonInactivo)
+                    .addComponent(ButtonActivo))
+                .addGap(17, 17, 17))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(ButtonActivo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonInactivo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -261,40 +312,40 @@ public class creacionempleado extends javax.swing.JFrame {
                     .addComponent(txtdireccion)
                     .addComponent(ComboMun, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ComboDepto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtisss)
-                    .addComponent(txtnup)
                     .addComponent(ComboAfp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ComboCivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtnombre)
                     .addComponent(txtDui)
                     .addComponent(txttelefono)
                     .addComponent(txtcorreo)
-                    .addComponent(txtnit))
-                .addGap(85, 85, 85)
+                    .addComponent(txtnit)
+                    .addComponent(txtisss)
+                    .addComponent(txtnup))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel19)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel23)
-                            .addComponent(jLabel24)
-                            .addComponent(jLabel21)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel20))
-                            .addComponent(jLabel22))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ComboEmpresa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(DateIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboNivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtsueldo)
+                            .addComponent(jLabel19)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton2)
-                                    .addComponent(jRadioButton1))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(64, 64, 64))
+                                    .addComponent(jLabel23)
+                                    .addComponent(jLabel21)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel20))
+                                    .addComponent(jLabel22))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ComboEmpresa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(DateIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comboNivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comboCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtsueldo))))
+                        .addGap(64, 64, 64))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -371,11 +422,11 @@ public class creacionempleado extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel13)
                                     .addComponent(txtnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(9, 9, 9)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel14)
                                     .addComponent(txtisss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(9, 9, 9)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel15)
                                     .addComponent(ComboAfp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -393,22 +444,16 @@ public class creacionempleado extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel21))
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel22)
                             .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel23)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton2)))
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(txtsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
@@ -426,9 +471,9 @@ public class creacionempleado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    private void ButtonActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActivoActionPerformed
+      ButtonActivo.setSelected(true);
+    }//GEN-LAST:event_ButtonActivoActionPerformed
 
     
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -499,7 +544,7 @@ public class creacionempleado extends javax.swing.JFrame {
     
     private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
       char c = evt.getKeyChar();
-if ((c<'a' || c>'z') && (c<'A' || c>'Z')) evt.consume();
+if ((c<'a' || c>'z') && (c<'A' || c>'Z')&& (c<' ' || c>' ')) evt.consume();
     }//GEN-LAST:event_txtnombreKeyTyped
 
     private void txtapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellidoKeyTyped
@@ -511,6 +556,27 @@ if ((c<'a' || c>'z') && (c<'A' || c>'Z')) evt.consume();
          char c = evt.getKeyChar();
 if ((c<'0' || c>'9')) evt.consume();
     }//GEN-LAST:event_txtDuiKeyTyped
+
+    private void txtnitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnitKeyTyped
+        char c = evt.getKeyChar();
+if ((c<'0' || c>'9')) evt.consume();
+    }//GEN-LAST:event_txtnitKeyTyped
+
+    private void txtisssKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtisssKeyTyped
+  char c = evt.getKeyChar();
+if ((c<'0' || c>'9')) evt.consume();
+    }//GEN-LAST:event_txtisssKeyTyped
+
+    private void txtsueldoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsueldoKeyTyped
+        char c = evt.getKeyChar();
+if ((c<'0' || c>'9')) evt.consume();
+    }//GEN-LAST:event_txtsueldoKeyTyped
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+busqueda bus= new busqueda ();
+bus.setLocationRelativeTo(null);
+bus.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_jButton3ActionPerformed
                                
    
 
@@ -528,6 +594,8 @@ if ((c<'0' || c>'9')) evt.consume();
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton ButtonActivo;
+    private javax.swing.JRadioButton ButtonInactivo;
     private javax.swing.JComboBox ComboAfp;
     private javax.swing.JComboBox ComboCivil;
     private javax.swing.JComboBox ComboDepto;
@@ -535,14 +603,8 @@ if ((c<'0' || c>'9')) evt.consume();
     private javax.swing.JComboBox ComboMun;
     private com.toedter.calendar.JDateChooser DateFecha;
     private com.toedter.calendar.JDateChooser DateIngreso;
+    private javax.swing.ButtonGroup GrupoEstado;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.ButtonGroup buttonGroup5;
-    private javax.swing.ButtonGroup buttonGroup6;
-    private javax.swing.ButtonGroup buttonGroup7;
     private javax.swing.JComboBox comboCargo;
     private javax.swing.JComboBox comboNivel;
     private javax.swing.JButton jButton2;
@@ -563,7 +625,6 @@ if ((c<'0' || c>'9')) evt.consume();
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -571,8 +632,7 @@ if ((c<'0' || c>'9')) evt.consume();
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
@@ -580,11 +640,11 @@ if ((c<'0' || c>'9')) evt.consume();
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtcorreo;
     private javax.swing.JTextField txtdireccion;
-    private javax.swing.JTextField txtisss;
+    private javax.swing.JFormattedTextField txtisss;
     private javax.swing.JFormattedTextField txtnit;
     private javax.swing.JTextField txtnombre;
-    private javax.swing.JTextField txtnup;
-    private javax.swing.JTextField txtsueldo;
+    private javax.swing.JFormattedTextField txtnup;
+    private javax.swing.JFormattedTextField txtsueldo;
     private javax.swing.JFormattedTextField txttelefono;
     // End of variables declaration//GEN-END:variables
 }
