@@ -157,7 +157,7 @@ public class creacionempleado extends javax.swing.JFrame {
 
         comboNivel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
 
-        DateIngreso.setDateFormatString("d/MMM/yyyy\n");
+        DateIngreso.setDateFormatString("dd/MMM/yyyy");
 
         comboCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
 
@@ -333,9 +333,9 @@ public class creacionempleado extends javax.swing.JFrame {
                     .addComponent(txtnit)
                     .addComponent(txtisss)
                     .addComponent(txtnup))
-                .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19)
                             .addGroup(layout.createSequentialGroup()
@@ -355,6 +355,7 @@ public class creacionempleado extends javax.swing.JFrame {
                                     .addComponent(txtsueldo))))
                         .addGap(64, 64, 64))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
