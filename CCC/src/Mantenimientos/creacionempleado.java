@@ -158,6 +158,11 @@ public class creacionempleado extends javax.swing.JFrame {
         comboNivel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
 
         DateIngreso.setDateFormatString("dd/MMM/yyyy");
+        DateIngreso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DateIngresoKeyTyped(evt);
+            }
+        });
 
         comboCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
 
@@ -613,6 +618,10 @@ bus.setVisible(rootPaneCheckingEnabled);
                 }
             }
     }//GEN-LAST:event_txtsueldoKeyTyped
+
+    private void DateIngresoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DateIngresoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DateIngresoKeyTyped
                                
    
 
@@ -620,7 +629,13 @@ bus.setVisible(rootPaneCheckingEnabled);
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) 
+    
+    
+    {
+        
+        
+        
        
         java.awt.EventQueue.invokeLater(new Runnable() {
 			@Override

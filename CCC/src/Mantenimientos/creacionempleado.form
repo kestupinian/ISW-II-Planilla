@@ -461,6 +461,9 @@
       <Properties>
         <Property name="dateFormatString" type="java.lang.String" value="dd/MMM/yyyy"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DateIngresoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="comboCargo">
       <Properties>
