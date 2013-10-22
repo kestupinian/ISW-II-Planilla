@@ -4,7 +4,10 @@
  */
 package Mantenimientos;
 
-import Clases.Municipio;
+
+import Clases.cConexion;
+import java.sql.Connection;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -169,13 +172,29 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
     }//GEN-LAST:event_txtnombreKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-Municipio c = new Municipio();
-
-int codigo = Integer.parseInt(this.txtcodigo.getText());
-String nombre = this.txtnombre.getText();
-
-c.GUARDAR(codigo, nombre);
-JOptionPane.showMessageDialog(null,"Informacion Registrada");
+Connection miConexion=(Connection) cConexion.GetConnection();
+        try
+        {
+            Statement statement=(Statement) miConexion.createStatement();
+          
+            String codigo=txtcodigo.getText();
+            String nombre=txtnombre.getText();
+           
+            //Aquí se asigna a la fecha en un formato el cual puede ser cambiado
+                      
+            statement.execute("insert into municipios values('"+codigo+"','"+nombre+"')");
+          
+            JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
+          
+            statement.close();
+            miConexion.close();
+        }
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, "Error "+ex.getMessage());
+        }
+      
+    
 		
 if(txtnombre.getText().isEmpty())
  {
