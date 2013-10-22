@@ -157,6 +157,8 @@ public class creacionempleado extends javax.swing.JFrame {
 
         comboNivel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
 
+        DateIngreso.setDateFormatString("d/MMM/yyyy\n");
+
         comboCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
 
         ComboCivil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a" }));
