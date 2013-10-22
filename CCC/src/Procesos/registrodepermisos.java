@@ -4,6 +4,8 @@
  */
 package Procesos;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -75,12 +77,14 @@ public class registrodepermisos extends javax.swing.JFrame {
 
         jLabel8.setText("Hasta");
 
+        DateDesde.setDateFormatString("dd/MMM/yyyy");
+
+        DateHasta.setDateFormatString("dd/MMM/yyyy");
+
         jTextField1.setEnabled(false);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("SISTEMA DE CONTROL DE PLANILLA");
-
-        txtnombre.setBackground(new java.awt.Color(255, 255, 255));
 
         txtapellido.setEnabled(false);
 
@@ -274,13 +278,17 @@ if(txtnombre.getText().isEmpty())
 {
 	JOptionPane.showMessageDialog(null, "Ingrese un comentario");
 }
+       
     }//GEN-LAST:event_btnguardarActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+
+
+
+
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
