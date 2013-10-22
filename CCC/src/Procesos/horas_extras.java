@@ -114,7 +114,15 @@ public class horas_extras extends javax.swing.JFrame {
             new String [] {
                 "Id", "Nombre Empleado", "Empresa", "Fecha", "Horas Extras Realizadas"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton4.setText("Modificar");
