@@ -179,10 +179,11 @@ Connection miConexion=(Connection) cConexion.GetConnection();
           
             String codigo=txtcodigo.getText();
             String nombre=txtnombre.getText();
+			String pais = comboPais.getSelectedItem().toString();
            
             //Aquí se asigna a la fecha en un formato el cual puede ser cambiado
                       
-            statement.execute("insert into municipios values('"+codigo+"','"+nombre+"')");
+            statement.execute("insert into municipios values('"+codigo+"','"+nombre+"','"+pais+"')");
           
             JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
           
