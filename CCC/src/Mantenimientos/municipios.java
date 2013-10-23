@@ -211,10 +211,6 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
             JOptionPane.showMessageDialog(this, "Error "+ex.getMessage());
         }
 }
-    
-		
-
-          
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
