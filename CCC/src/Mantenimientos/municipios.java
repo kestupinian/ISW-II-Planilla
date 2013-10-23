@@ -172,41 +172,48 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
     }//GEN-LAST:event_txtnombreKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-Connection miConexion=(Connection) cConexion.GetConnection();
+
+{Connection miConexion=(Connection) cConexion.GetConnection();
         try
-        {
+        {if(txtcodigo.getText().isEmpty())
+ {
+		JOptionPane.showMessageDialog(null,"Favor ingrese un codigo");
+ }else if(txtnombre.getText().isEmpty())
+ {
+		JOptionPane.showMessageDialog(null,"Favor ingrese un nombre");
+		
+ }else  if(comboPais.getSelectedItem().equals("Seleccionar"))
+ {
+		JOptionPane.showMessageDialog(null,"Favor seleccionar un país");
+		
+}else if (combodpto.getSelectedItem().equals("Seleccionar"))
+{
+		JOptionPane.showMessageDialog(null,"Favor seleccionar un departamento");
+}else{
             Statement statement=(Statement) miConexion.createStatement();
           
             String codigo=txtcodigo.getText();
-            String nombre=txtnombre.getText();
+			String nombre=txtnombre.getText();
 			String pais = comboPais.getSelectedItem().toString();
+			String dpto = combodpto.getSelectedItem().toString();
            
             //Aquí se asigna a la fecha en un formato el cual puede ser cambiado
                       
-            statement.execute("insert into municipios values('"+codigo+"','"+nombre+"','"+pais+"')");
+            statement.execute("insert into municipios values('"+codigo+"','"+nombre+"','"+pais+"', '"+dpto+"')");
           
             JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
           
             statement.close();
             miConexion.close();
-        }
+        }}
         catch (Exception ex)
         {
             JOptionPane.showMessageDialog(this, "Error "+ex.getMessage());
         }
-      
+}
     
 		
-if(txtnombre.getText().isEmpty())
- {
-		JOptionPane.showMessageDialog(null,"Favor ingrese un nombre");
- }else if(comboPais.getSelectedItem().equals("Seleccionar"))
- {
-		JOptionPane.showMessageDialog(null,"Favor seleccionar un país");
-}else if (combodpto.getSelectedItem().equals("Seleccionar"))
-{
-		JOptionPane.showMessageDialog(null,"Favor seleccionar un departamento");
-}
+
           
     }//GEN-LAST:event_jButton1ActionPerformed
 
