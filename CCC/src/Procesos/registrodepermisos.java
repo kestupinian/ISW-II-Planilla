@@ -4,13 +4,20 @@
  */
 package Procesos;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.lang.model.type.ErrorType;
 import javax.swing.JOptionPane;
+import sun.applet.Main;
 
 /**
  *
- * @author Manuel
+ * @author Kenia
  */
 public class registrodepermisos extends javax.swing.JFrame {
 
@@ -284,11 +291,10 @@ if(txtnombre.getText().isEmpty())
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
 
-
-
-
+     public static void main(String args[]) {
+       
+   
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -311,13 +317,17 @@ if(txtnombre.getText().isEmpty())
         }
         //</editor-fold>
 
-        /* Create and display the form */
+       
+            /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new registrodepermisos().setVisible(true);
             }
         });
     }
+        
+        
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox ComboPermiso;
     private com.toedter.calendar.JDateChooser DateDesde;
