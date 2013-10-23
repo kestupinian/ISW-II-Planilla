@@ -53,7 +53,7 @@
               </Group>
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jTextField1" max="32767" attributes="0"/>
+                  <Component id="txtcodigo" max="32767" attributes="0"/>
                   <Component id="DateFecha" alignment="0" pref="175" max="32767" attributes="0"/>
                   <Component id="txtapellido" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtdireccion" alignment="0" max="32767" attributes="0"/>
@@ -139,7 +139,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtcodigo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtnombre" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
@@ -292,10 +292,7 @@
         <Property name="text" type="java.lang.String" value="Tel&#xe9;fono"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
-      <Properties>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="txtcodigo">
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="DateFecha">
     </Component>

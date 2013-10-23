@@ -4,10 +4,13 @@
  */
 package Mantenimientos;
 
+import Clases.cConexion;
 import Procesos.busqueda;
 import javax.swing.JOptionPane;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -40,7 +43,7 @@ public class creacionempleado extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtcodigo = new javax.swing.JTextField();
         DateFecha = new com.toedter.calendar.JDateChooser();
         txtapellido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -102,8 +105,6 @@ public class creacionempleado extends javax.swing.JFrame {
         jLabel5.setText("Fecha de nacimiento");
 
         jLabel6.setText("Teléfono");
-
-        jTextField1.setEnabled(false);
 
         txtapellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -323,7 +324,7 @@ public class creacionempleado extends javax.swing.JFrame {
                     .addComponent(jLabel17))
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
+                    .addComponent(txtcodigo)
                     .addComponent(DateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                     .addComponent(txtapellido)
                     .addComponent(txtdireccion)
@@ -392,7 +393,7 @@ public class creacionempleado extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(7, 7, 7)
@@ -494,7 +495,13 @@ public class creacionempleado extends javax.swing.JFrame {
 
     
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
- if (txtnombre.getText().equals(""))
+
+{Connection miConexion=(Connection) cConexion.GetConnection(); 
+	try
+	{if (txtcodigo.getText().equals(""))
+{
+JOptionPane.showMessageDialog(null, "Ingrese un código");
+}else if (txtnombre.getText().equals(""))
 {
 	JOptionPane.showMessageDialog(null, "Ingrese nombre");
 } else if (txtapellido.getText().equals(""))
@@ -552,9 +559,45 @@ public class creacionempleado extends javax.swing.JFrame {
 }else if (txtsueldo.getText().equals(""))
 {
 	JOptionPane.showMessageDialog(null, "Ingrese el sueldo");
-}else 
-{
-	JOptionPane.showMessageDialog(null, "Datos guardados con éxito Empleado Creado");
+}else {
+			Statement statement=(Statement) miConexion.createStatement();
+          
+            
+			String cod=txtcodigo.getText();
+			String nom=txtnombre.getText();
+			String ape=txtapellido.getText();
+			String civil = ComboCivil.getSelectedItem().toString();
+			//fecha
+			String tel=txttelefono.getText();
+			String correo=txtcorreo.getText();
+			String dir=txtdireccion.getText();
+			String mun = ComboMun.getSelectedItem().toString();
+			String dpto = ComboDepto.getSelectedItem().toString();
+			String dui=txtDui.getText();
+			String nit=txtnit.getText();
+			String is=txtisss.getText();
+			String afp = ComboAfp.getSelectedItem().toString();
+			String nup=txtnup.getText();
+			//fecha
+			String emp = ComboEmpresa.getSelectedItem().toString();
+			String nivel = comboNivel.getSelectedItem().toString();
+			String cargo = comboCargo.getSelectedItem().toString();
+			String sueldo=txtsueldo.getText();
+			
+           
+            //Aquí se asigna a la fecha en un formato el cual puede ser cambiado
+                      
+            statement.execute("insert into empleado values('"+cod+"','"+nom+"','"+ape+"','"+civil+"','"+tel+"','"+correo+"','"+dir+"','"+mun+"','"+dpto+"','"+dui+"','"+nit+"','"+is+"','"+afp+"','"+nup+"','"+emp+"','"+nivel+"','"+cargo+"','"+sueldo+"')");
+          
+            JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
+          
+            statement.close();
+            miConexion.close();
+        }}
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, "Error "+ex.getMessage());
+        }
 }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -686,9 +729,9 @@ bus.setVisible(rootPaneCheckingEnabled);
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JFormattedTextField txtDui;
     private javax.swing.JTextField txtapellido;
+    private javax.swing.JTextField txtcodigo;
     private javax.swing.JTextField txtcorreo;
     private javax.swing.JTextField txtdireccion;
     private javax.swing.JFormattedTextField txtisss;
