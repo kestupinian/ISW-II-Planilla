@@ -49,7 +49,7 @@ void mostrardatos(){
 		
 	}catch (SQLException ex){
 		Logger.getLogger(cargos.class.getName()).log(Level.SEVERE, null, ex);
-		
+	
 	}
 }
 
@@ -145,12 +145,12 @@ void mostrardatos(){
                                         .addComponent(btnguardar)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnmodificar)))
-                                .addGap(452, 452, 452)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btneliminar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +172,7 @@ void mostrardatos(){
                     .addComponent(btneliminar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -211,10 +211,9 @@ try
 		JOptionPane.showMessageDialog(null,"Favor ingrese un nombre");
  }else{
             
-	 PreparedStatement pst = miConexion.prepareStatement("update into cargo (codigo,nombre) values (?, ?)");
+	 PreparedStatement pst = miConexion.prepareStatement("update cargo set nombre='"+txtnombre.getText()+"' where codigo='"+txtcodigo.getText()+"'");
 		JOptionPane.showMessageDialog(this, "Datos modificados correctamente");
-pst.setString(2, txtcodigo.getText());
-pst.setString(1, txtnombre.getText());
+
 pst.executeUpdate();
 	 
 	 }}
