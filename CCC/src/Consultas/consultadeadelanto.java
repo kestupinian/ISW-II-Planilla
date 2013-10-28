@@ -228,7 +228,7 @@ bus.setVisible(rootPaneCheckingEnabled);
                         SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin");
                         SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
 
-                new consultadeadelanto().setVisible(true);
+                                new consultadeadelanto().setVisible(true);
             }
         });
     }
