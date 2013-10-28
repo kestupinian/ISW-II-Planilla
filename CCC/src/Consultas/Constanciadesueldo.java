@@ -7,7 +7,6 @@ package Consultas;
 import Procesos.busqueda;
 import org.jvnet.substance.SubstanceLookAndFeel;
 import Procesos.busqueda;
-import org.jvnet.substance.painter.decoration.DecorationAreaType;
 /**
  *
  * @author Manuel
@@ -146,6 +145,7 @@ bus.setVisible(rootPaneCheckingEnabled);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 
                 setDefaultLookAndFeelDecorated(true);
                         SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin");

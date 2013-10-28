@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package Consultas;
-
+import org.jvnet.substance.SubstanceLookAndFeel;
 import Procesos.busqueda;
 import javax.swing.JOptionPane;
 
@@ -55,7 +55,7 @@ public class ConsultaPermisos extends javax.swing.JFrame {
         jLabel3.setText("Nombres");
 
         jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
+        jTextField1.setBackground(new java.awt.Color(240, 240, 240));
 
         btnbuscarPermiso.setText("Buscar");
         btnbuscarPermiso.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +85,8 @@ public class ConsultaPermisos extends javax.swing.JFrame {
         jLabel6.setText("Apellidos");
 
         txtApellidos.setEditable(false);
-        txtApellidos.setBackground(new java.awt.Color(204, 204, 204));
+
+        txtnombre.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,8 +118,10 @@ public class ConsultaPermisos extends javax.swing.JFrame {
                                                 .addComponent(jLabel1))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(29, 29, 29)
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnbuscarPermiso)))
+                                        .addGap(0, 38, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
@@ -132,9 +135,7 @@ public class ConsultaPermisos extends javax.swing.JFrame {
                                             .addComponent(DateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(DateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnbuscarPermiso)
-                        .addGap(34, 34, 34))))
+                        .addGap(79, 79, 79))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,19 +145,19 @@ public class ConsultaPermisos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnbuscarPermiso))
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtnombre)
-                    .addComponent(btnbuscarPermiso))
+                    .addComponent(txtnombre))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jLabel6))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addComponent(txtApellidos)))
+                        .addComponent(txtApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
@@ -228,6 +229,10 @@ dispose();
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
+                            setDefaultLookAndFeelDecorated(true);
+                        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin");
+                        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
+
 				new ConsultaPermisos().setVisible(true);
 			}
 		});

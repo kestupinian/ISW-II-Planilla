@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package Consultas;
-
+import org.jvnet.substance.SubstanceLookAndFeel;
 /**
  *
  * @author Manuel
@@ -160,6 +160,10 @@ public class ConsultaPlanilla extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                setDefaultLookAndFeelDecorated(true);
+                        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin");
+                        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
+
                 new ConsultaPlanilla().setVisible(true);
             }
         });

@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package Consultas;
-
+import org.jvnet.substance.SubstanceLookAndFeel;
 import Procesos.busqueda;
 
 /**
@@ -167,6 +167,10 @@ bus.setVisible(rootPaneCheckingEnabled);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                setDefaultLookAndFeelDecorated(true);
+                        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin");
+                        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
+
                 new constanciarenta().setVisible(true);
             }
         });

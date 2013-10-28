@@ -5,6 +5,7 @@
 package Consultas;
 
 import Procesos.busqueda;
+import org.jvnet.substance.SubstanceLookAndFeel;
 import javax.swing.JOptionPane;
 
 /**
@@ -195,6 +196,10 @@ if (txtnombre.getText().isEmpty())
 		
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
+                            setDefaultLookAndFeelDecorated(true);
+                        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin");
+                        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
+
 				new ConsultaDescuentos().setVisible(true);
 			}
 		});
