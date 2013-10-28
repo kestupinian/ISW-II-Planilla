@@ -4,9 +4,12 @@
  */
 package Mantenimientos;
 
+import Clases.cCargos;
 import javax.swing.JOptionPane;
 
-/**
+
+        
+    /**
  *
  * @author mercedes Moreno
  */
@@ -32,10 +35,10 @@ public class cargos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtcargos = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtnombre = new javax.swing.JTextField();
         btnguardar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnmodificar = new javax.swing.JButton();
+        btneliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -49,9 +52,9 @@ public class cargos extends javax.swing.JFrame {
 
         jLabel3.setText("Nombre:");
 
-        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField2KeyTyped(evt);
+                txtnombreKeyTyped(evt);
             }
         });
 
@@ -62,9 +65,19 @@ public class cargos extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Modificar");
+        btnmodificar.setText("Modificar");
+        btnmodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmodificarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Eliminar");
+        btneliminar.setText("Eliminar");
+        btneliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminarActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,13 +109,13 @@ public class cargos extends javax.swing.JFrame {
                             .addComponent(txtcargos, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtnombre, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnguardar)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton2)))
+                                        .addComponent(btnmodificar)))
                                 .addGap(24, 24, 24)
-                                .addComponent(jButton3))
+                                .addComponent(btneliminar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -120,12 +133,12 @@ public class cargos extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnguardar)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnmodificar)
+                    .addComponent(btneliminar))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(31, Short.MAX_VALUE))
@@ -134,22 +147,48 @@ public class cargos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+    private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
         char c = evt.getKeyChar();
 if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
-    }//GEN-LAST:event_jTextField2KeyTyped
+    }//GEN-LAST:event_txtnombreKeyTyped
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
 
-     if(btnguardar.getText().isEmpty())
+                cCargos c = new cCargos();
+        
+                int ID_Cargos = Integer.parseInt(this.txtcargos.getText());
+        String Nombre = this.txtnombre.getText();
+        c.GUARDAR(ID_Cargos, Nombre);
+        JOptionPane.showMessageDialog(null, "INFORMACION GUARDADA");
+                        
+    if(btnguardar.getText().isEmpty())
 {
 	JOptionPane.showMessageDialog(null, "Favor ingrese un cargo");
     }//GEN-LAST:event_btnguardarActionPerformed
+}
+    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
 
-         
-         }
-         
-    /**
+        cCargos c = new cCargos();
+        
+                int ID_Cargos = Integer.parseInt(this.txtcargos.getText());
+        String nombre = this.txtnombre.getText();
+        c.MODIFICAR(ID_Cargos, nombre);
+        JOptionPane.showMessageDialog(null, "INFORMACION GUARDADA");
+        
+    }//GEN-LAST:event_btnmodificarActionPerformed
+
+    private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
+        
+        cCargos c = new cCargos();
+        
+        int ID_Cargos = Integer.parseInt(this.txtcargos.getText());
+        c.BORRAR(ID_Cargos);
+         JOptionPane.showMessageDialog(null, "INFORMACION ALMACENADA");
+    }//GEN-LAST:event_btneliminarActionPerformed
+
+   
+        
+/**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -184,15 +223,15 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnguardar;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnmodificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField txtcargos;
+    private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 }

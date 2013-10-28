@@ -5,6 +5,7 @@
 package Mantenimientos;
 
 import Clases.cConexion;
+import org.jvnet.substance.SubstanceLookAndFeel;
 import Procesos.busqueda;
 import javax.swing.JOptionPane;
 import java.awt.Toolkit;
@@ -13,6 +14,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.util.Date;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Manuel
@@ -685,6 +687,9 @@ bus.setVisible(rootPaneCheckingEnabled);
         java.awt.EventQueue.invokeLater(new Runnable() {
 			@Override
             public void run() {
+                            setDefaultLookAndFeelDecorated(true);
+                        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin");
+                        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
                 new creacionempleado().setVisible(true);
             }
         });
