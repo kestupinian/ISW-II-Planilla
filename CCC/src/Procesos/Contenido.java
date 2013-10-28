@@ -16,6 +16,8 @@ import Mantenimientos.creacionempleado;
 import Mantenimientos.afp;
 import Mantenimientos.departamento;
 import Mantenimientos.municipios;
+import org.jvnet.substance.SubstanceLookAndFeel;
+
 
 
 
@@ -26,7 +28,7 @@ import Mantenimientos.municipios;
 public class Contenido extends javax.swing.JFrame {
 
 	/**
-	 * Creates new form Contenido
+	 * Creates new form
 	 */
 	public Contenido() {
 		initComponents();
@@ -85,7 +87,7 @@ public class Contenido extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("SISTEMA DE CONTROL DE PLANILLAS ");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/callcenter.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         jMenu1.setText("Registros");
@@ -307,9 +309,9 @@ public class Contenido extends javax.swing.JFrame {
                         .addGap(284, 284, 284)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jLabel4)))
-                .addContainerGap(288, Short.MAX_VALUE))
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,7 +322,7 @@ public class Contenido extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         pack();
@@ -492,6 +494,11 @@ System.exit(0);        // TODO add your handling code here:
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
+                         setDefaultLookAndFeelDecorated(true);
+                        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin");
+                        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
+
+
 				new Contenido().setVisible(true);
 			}
 		});
