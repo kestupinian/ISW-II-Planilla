@@ -6,6 +6,7 @@ package Consultas;
 
 import Procesos.busqueda;
 import javax.swing.JOptionPane;
+import org.jvnet.substance.SubstanceLookAndFeel;
 
 /**
  *
@@ -223,6 +224,10 @@ bus.setVisible(rootPaneCheckingEnabled);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                setDefaultLookAndFeelDecorated(true);
+                        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin");
+                        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
+
                 new consultadeadelanto().setVisible(true);
             }
         });
