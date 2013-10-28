@@ -11,7 +11,6 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 /**
@@ -25,6 +24,7 @@ public class creacionempleado extends javax.swing.JFrame {
      */
     public creacionempleado() {
         initComponents();
+		
     }
 
     /**
@@ -105,6 +105,8 @@ public class creacionempleado extends javax.swing.JFrame {
         jLabel5.setText("Fecha de nacimiento");
 
         jLabel6.setText("Teléfono");
+
+        DateFecha.setDateFormatString("yyyy-MM-dd");
 
         txtapellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -567,7 +569,7 @@ JOptionPane.showMessageDialog(null, "Ingrese un código");
 			String nom=txtnombre.getText();
 			String ape=txtapellido.getText();
 			String civil = ComboCivil.getSelectedItem().toString();
-			//fecha
+			Date nac= DateFecha.getDate();
 			String tel=txttelefono.getText();
 			String correo=txtcorreo.getText();
 			String dir=txtdireccion.getText();
@@ -587,7 +589,7 @@ JOptionPane.showMessageDialog(null, "Ingrese un código");
            
             //Aquí se asigna a la fecha en un formato el cual puede ser cambiado
                       
-            statement.execute("insert into empleado values('"+cod+"','"+nom+"','"+ape+"','"+civil+"','"+tel+"','"+correo+"','"+dir+"','"+mun+"','"+dpto+"','"+dui+"','"+nit+"','"+is+"','"+afp+"','"+nup+"','"+emp+"','"+nivel+"','"+cargo+"','"+sueldo+"')");
+            statement.execute("insert into empleado values('"+cod+"','"+nom+"','"+ape+"','"+civil+"','"+nac+"','"+tel+"','"+correo+"','"+dir+"','"+mun+"','"+dpto+"','"+dui+"','"+nit+"','"+is+"','"+afp+"','"+nup+"','"+emp+"','"+nivel+"','"+cargo+"','"+sueldo+"')");
           
             JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
           
