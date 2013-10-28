@@ -4,6 +4,8 @@
  */
 package Mantenimientos;
 
+import Clases.cConexion;
+import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,7 +36,7 @@ public class departamento extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
-        combo = new javax.swing.JComboBox();
+        combopais = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -60,10 +62,10 @@ public class departamento extends javax.swing.JFrame {
             }
         });
 
-        combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 1", "Item 2", "Item 3", "Item 4" }));
-        combo.addActionListener(new java.awt.event.ActionListener() {
+        combopais.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combopais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboActionPerformed(evt);
+                combopaisActionPerformed(evt);
             }
         });
 
@@ -109,7 +111,7 @@ public class departamento extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtnombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(combo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(combopais, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -143,7 +145,7 @@ public class departamento extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combopais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -157,9 +159,9 @@ public class departamento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
+    private void combopaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combopaisActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboActionPerformed
+    }//GEN-LAST:event_combopaisActionPerformed
 
     private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
 char c = evt.getKeyChar();
@@ -167,13 +169,32 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
     }//GEN-LAST:event_txtnombreKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-if (txtnombre.getText().isEmpty())
-{
+try
+        {if(txtnombre.getText().isEmpty())
+ {
 		JOptionPane.showMessageDialog(null,"Favor ingrese un nombre");
-}else if(combo.getSelectedItem().equals("Seleccionar"))
-{
-		JOptionPane.showMessageDialog(null,"Favor seleccione una opción");
-}
+ }else  if(combopais.getSelectedItem().equals("Seleccionar"))
+ {
+		JOptionPane.showMessageDialog(null,"Favor seleccionar un país");
+		
+}else{
+            
+	 PreparedStatement pst = miConexion.prepareStatement("insert into departamento (nombre, pais) values (?,?)");
+		JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
+	 pst.setString(1, txtnombre.getText());
+	 pst.setString(2, combopais.getSelectedItem().toString());
+	 pst.executeUpdate();
+	 
+	 //Statement statement=(Statement) miConexion.createStatement();
+            //statement.execute("insert into municipios values('"+codigo+"','"+nombre+"','"+pais+"', '"+dpto+"')");
+           //JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
+          
+            
+        }}
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, "Error "+ex.getMessage());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -211,7 +232,7 @@ if (txtnombre.getText().isEmpty())
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox combo;
+    private javax.swing.JComboBox combopais;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -224,4 +245,5 @@ if (txtnombre.getText().isEmpty())
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
+Connection miConexion= (Connection) cConexion.GetConnection();
 }
