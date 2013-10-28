@@ -4,7 +4,10 @@
  */
 package Mantenimientos;
 
-import Clases.cCargos;
+
+import Clases.cConexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
 
@@ -154,40 +157,46 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
 
-                cCargos c = new cCargos();
-        
-                int ID_Cargos = Integer.parseInt(this.txtcargos.getText());
-        String Nombre = this.txtnombre.getText();
-        c.GUARDAR(ID_Cargos, Nombre);
-        JOptionPane.showMessageDialog(null, "INFORMACION GUARDADA");
-                        
-    if(btnguardar.getText().isEmpty())
-{
-	JOptionPane.showMessageDialog(null, "Favor ingrese un cargo");
+      try
+        {if(txtnombre.getText().isEmpty())
+ {
+		JOptionPane.showMessageDialog(null,"Favor ingrese un nombre");
+ }else{
+            
+	 PreparedStatement pst = miConexion.prepareStatement("insert into cargo (nombre) values (?)");
+		JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
+	 pst.setString(1, txtnombre.getText());
+	  pst.executeUpdate();
+	 
+	 }}
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, "Error "+ex.getMessage());
+        }
     }//GEN-LAST:event_btnguardarActionPerformed
-}
-    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
 
-        cCargos c = new cCargos();
-        
-                int ID_Cargos = Integer.parseInt(this.txtcargos.getText());
-        String nombre = this.txtnombre.getText();
-        c.MODIFICAR(ID_Cargos, nombre);
-        JOptionPane.showMessageDialog(null, "INFORMACION GUARDADA");
-        
+    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+try
+        {if(txtnombre.getText().isEmpty())
+ {
+		JOptionPane.showMessageDialog(null,"Favor ingrese un nombre");
+ }else{
+            
+	 PreparedStatement pst = miConexion.prepareStatement("update into cargo (nombre) values (?)");
+		JOptionPane.showMessageDialog(this, "Datos modificados correctamente");
+	 pst.setString(1, txtnombre.getText());
+	  pst.executeUpdate();
+	 
+	 }}
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, "Error "+ex.getMessage());
+        }
     }//GEN-LAST:event_btnmodificarActionPerformed
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
         
-        cCargos c = new cCargos();
-        
-        int ID_Cargos = Integer.parseInt(this.txtcargos.getText());
-        c.BORRAR(ID_Cargos);
-         JOptionPane.showMessageDialog(null, "INFORMACION ALMACENADA");
     }//GEN-LAST:event_btneliminarActionPerformed
-
-   
-        
 /**
      * @param args the command line arguments
      */
@@ -219,9 +228,9 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new cargos().setVisible(true);
-            }
-        });
     }
+});
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnguardar;
@@ -234,4 +243,5 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
     private javax.swing.JTextField txtcargos;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
+Connection miConexion= (Connection) cConexion.GetConnection();
 }
