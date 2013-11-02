@@ -73,7 +73,7 @@ void mostrardatos(){
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Mantenimiento Cargos");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
