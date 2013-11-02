@@ -14,6 +14,7 @@ import Consultas.ConsultaHorasExtras;
 import Mantenimientos.creacionempresa;
 import Mantenimientos.creacionempleado;
 import Mantenimientos.afp;
+import Mantenimientos.cargos;
 import Mantenimientos.departamento;
 import Mantenimientos.municipios;
 import org.jvnet.substance.SubstanceLookAndFeel;
@@ -67,6 +68,7 @@ public class Contenido extends javax.swing.JFrame {
         jMenuItem19 = new javax.swing.JMenuItem();
         MtoEmp = new javax.swing.JMenuItem();
         ProCEmp = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -236,6 +238,14 @@ public class Contenido extends javax.swing.JFrame {
             }
         });
         jMenu4.add(ProCEmp);
+
+        jMenuItem14.setText("Cargos");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem14);
 
         jMenuBar1.add(jMenu4);
 
@@ -464,6 +474,12 @@ cemp.setVisible(rootPaneCheckingEnabled);
 System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+cargos car = new cargos();
+car.setLocationRelativeTo(null);
+car.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
 	/**
 	 * @param args the command line arguments
 	 */
@@ -523,6 +539,7 @@ System.exit(0);        // TODO add your handling code here:
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;

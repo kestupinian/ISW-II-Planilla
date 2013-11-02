@@ -57,12 +57,12 @@
                   <Component id="DateFecha" alignment="0" pref="175" max="32767" attributes="0"/>
                   <Component id="txtapellido" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtdireccion" alignment="0" max="32767" attributes="0"/>
-                  <Component id="ComboMun" alignment="0" max="32767" attributes="0"/>
-                  <Component id="ComboDepto" alignment="0" max="32767" attributes="0"/>
-                  <Component id="ComboAfp" alignment="0" max="32767" attributes="0"/>
-                  <Component id="ComboCivil" max="32767" attributes="0"/>
+                  <Component id="combomun" alignment="0" max="32767" attributes="0"/>
+                  <Component id="combodpto" alignment="0" max="32767" attributes="0"/>
+                  <Component id="comboafp" alignment="0" max="32767" attributes="0"/>
+                  <Component id="combocivil" max="32767" attributes="0"/>
                   <Component id="txtnombre" max="32767" attributes="0"/>
-                  <Component id="txtDui" max="32767" attributes="0"/>
+                  <Component id="txtdui" max="32767" attributes="0"/>
                   <Component id="txttelefono" max="32767" attributes="0"/>
                   <Component id="txtcorreo" max="32767" attributes="0"/>
                   <Component id="txtnit" max="32767" attributes="0"/>
@@ -86,10 +86,10 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="ComboEmpresa" max="32767" attributes="0"/>
+                                  <Component id="comboempresa" max="32767" attributes="0"/>
                                   <Component id="DateIngreso" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="comboNivel" max="32767" attributes="0"/>
-                                  <Component id="comboCargo" max="32767" attributes="0"/>
+                                  <Component id="combonivel" max="32767" attributes="0"/>
+                                  <Component id="combocargo" max="32767" attributes="0"/>
                                   <Component id="txtsueldo" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -154,7 +154,7 @@
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ComboCivil" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="combocivil" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -179,17 +179,17 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ComboMun" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="combomun" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ComboDepto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="combodpto" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtDui" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtdui" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -204,7 +204,7 @@
                               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ComboAfp" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="comboafp" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -218,18 +218,18 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ComboEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboempresa" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="comboNivel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="combonivel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="comboCargo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="combocargo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -356,7 +356,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtdireccion">
     </Component>
-    <Component class="javax.swing.JComboBox" name="ComboMun">
+    <Component class="javax.swing.JComboBox" name="combomun">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -368,7 +368,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="ComboDepto">
+    <Component class="javax.swing.JComboBox" name="combodpto">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -380,7 +380,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="ComboAfp">
+    <Component class="javax.swing.JComboBox" name="comboafp">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -433,7 +433,7 @@
         <Property name="text" type="java.lang.String" value="Sueldo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="ComboEmpresa">
+    <Component class="javax.swing.JComboBox" name="comboempresa">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -445,7 +445,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="comboNivel">
+    <Component class="javax.swing.JComboBox" name="combonivel">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -465,7 +465,7 @@
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DateIngresoKeyTyped"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="comboCargo">
+    <Component class="javax.swing.JComboBox" name="combocargo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -477,7 +477,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="ComboCivil">
+    <Component class="javax.swing.JComboBox" name="combocivil">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="5">
@@ -538,14 +538,14 @@
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtnombreKeyTyped"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="txtDui">
+    <Component class="javax.swing.JFormattedTextField" name="txtdui">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
           <Format format="########-#" subtype="-1" type="5"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDuiKeyTyped"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtduiKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="txttelefono">
