@@ -13,6 +13,7 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -91,6 +92,8 @@ public class creacionempleado extends javax.swing.JFrame {
         ButtonActivo = new javax.swing.JRadioButton();
         ButtonInactivo = new javax.swing.JRadioButton();
         txtsueldo = new javax.swing.JTextField();
+        lblfecha = new javax.swing.JLabel();
+        lblfechaing = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Creación de Empleado");
@@ -109,7 +112,10 @@ public class creacionempleado extends javax.swing.JFrame {
 
         jLabel6.setText("Teléfono");
 
-        DateFecha.setDateFormatString("yyyy-MM-dd");
+        txtcodigo.setEditable(false);
+        txtcodigo.setEnabled(false);
+
+        DateFecha.setDateFormatString("yyyy/MMM/dd");
 
         txtapellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -137,11 +143,16 @@ public class creacionempleado extends javax.swing.JFrame {
 
         jLabel16.setText("NUP");
 
-        combomun.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
+        combomun.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Soyapango", "San Salvador", "Ilopango", "Apopa" }));
+        combomun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combomunActionPerformed(evt);
+            }
+        });
 
-        combodpto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
+        combodpto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "San Salvador", "Morazán", "La Unión ", "La Libertad", "San Miguel", "Santa Ana" }));
 
-        comboafp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
+        comboafp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Crecer", "Confia", "IPSFA" }));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel17.setText("Datos personales");
@@ -161,16 +172,16 @@ public class creacionempleado extends javax.swing.JFrame {
 
         comboempresa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
 
-        combonivel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
+        combonivel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Nivel 1", "Nivel 2", "Nivel 3", "Nivel 4", "Nivel 5" }));
 
-        DateIngreso.setDateFormatString("dd/MMM/yyyy");
+        DateIngreso.setDateFormatString("yyyy/MMM/dd");
         DateIngreso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 DateIngresoKeyTyped(evt);
             }
         });
 
-        combocargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 2", "Item 3", "Item 4" }));
+        combocargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Subgerente", "Gerente", "Agente " }));
 
         combocivil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a" }));
 
@@ -304,6 +315,13 @@ public class creacionempleado extends javax.swing.JFrame {
             }
         });
 
+        lblfecha.setFont(new java.awt.Font("Tahoma", 0, 3)); // NOI18N
+        lblfecha.setForeground(new java.awt.Color(240, 240, 240));
+        lblfecha.setEnabled(false);
+
+        lblfechaing.setFont(new java.awt.Font("Tahoma", 0, 3)); // NOI18N
+        lblfechaing.setForeground(new java.awt.Color(240, 240, 240));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -346,7 +364,9 @@ public class creacionempleado extends javax.swing.JFrame {
                     .addComponent(txtnup))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblfecha)
+                        .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19)
                             .addGroup(layout.createSequentialGroup()
@@ -364,7 +384,9 @@ public class creacionempleado extends javax.swing.JFrame {
                                     .addComponent(combonivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(combocargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtsueldo))))
-                        .addGap(64, 64, 64))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblfechaing)
+                        .addGap(20, 20, 20))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(76, 76, 76)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -398,12 +420,6 @@ public class creacionempleado extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)
-                                .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(16, 16, 16)
                                 .addComponent(jLabel3)
@@ -412,12 +428,20 @@ public class creacionempleado extends javax.swing.JFrame {
                                 .addGap(15, 15, 15)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel4)
-                                    .addComponent(combocivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(DateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(combocivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel6)
                                     .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -452,13 +476,15 @@ public class creacionempleado extends javax.swing.JFrame {
                                 .addGap(9, 9, 9)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel15)
-                                    .addComponent(comboafp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(comboafp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(DateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(DateIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18))
+                            .addComponent(jLabel18)
+                            .addComponent(lblfechaing))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -562,26 +588,39 @@ public class creacionempleado extends javax.swing.JFrame {
 {
 	JOptionPane.showMessageDialog(null, "Ingrese el sueldo");
 }else {
-		PreparedStatement pst = miConexion.prepareStatement("insert into departamento (nombre, apellido, estado_civil, telefono, correo, direccion, municipio, departamento, dui, nit, isss, afp, nup, empresa, nivel, cargo, sueldo) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    
+    String formato = "yyyy/MM/dd";
+       Date date = DateFecha.getDate();
+       SimpleDateFormat sdf = new SimpleDateFormat (formato);
+      lblfecha.setText(sdf.format(date));
+    
+      String formato1 = "yyyy/MM/dd";
+       Date date1 = DateIngreso.getDate();
+       SimpleDateFormat sdf1 = new SimpleDateFormat (formato1);
+      lblfechaing.setText(sdf1.format(date1));
+      
+		PreparedStatement pst = miConexion.prepareStatement("insert into empleado (nombre, apellido, estado_civil, fechanacimiento, telefono, correo, direccion, municipio, departamento, dui, nit, isss, afp, nup, fechaingreso, empresa, nivel, cargo, sueldo) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		
 		JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
 	 pst.setString(1, txtnombre.getText());
 	 pst.setString(2, txtapellido.getText());
 	 pst.setString(3, combocivil.getSelectedItem().toString());
-	 pst.setString(4, txttelefono.getText());
-	 pst.setString(5, txtcorreo.getText());
-	 pst.setString(6, txtdireccion.getText());
-	 pst.setString(7, combomun.getSelectedItem().toString());
-	 pst.setString(8, combodpto.getSelectedItem().toString());
-	 pst.setString(9, txtdui.getText());
-	 pst.setString(10, txtnit.getText());
-	 pst.setString(11, txtisss.getText());
-	 pst.setString(12, comboafp.getSelectedItem().toString());
-	 pst.setString(13, txtnup.getText());
-	 pst.setString(14, comboempresa.getSelectedItem().toString());
-	 pst.setString(15, combonivel.getSelectedItem().toString());
-	 pst.setString(16, combocargo.getSelectedItem().toString());
-	 pst.setString(17, txtsueldo.getText());
+         pst.setString(4, lblfecha.getText());
+	 pst.setString(5, txttelefono.getText());
+	 pst.setString(6, txtcorreo.getText());
+	 pst.setString(7, txtdireccion.getText());
+	 pst.setString(8, combomun.getSelectedItem().toString());
+	 pst.setString(9, combodpto.getSelectedItem().toString());
+	 pst.setString(10, txtdui.getText());
+	 pst.setString(11, txtnit.getText());
+	 pst.setString(12, txtisss.getText());
+	 pst.setString(13, comboafp.getSelectedItem().toString());
+	 pst.setString(14, txtnup.getText());
+         pst.setString(15, lblfechaing.getText());
+	 pst.setString(16, comboempresa.getSelectedItem().toString());
+	 pst.setString(17, combonivel.getSelectedItem().toString());
+	 pst.setString(18, combocargo.getSelectedItem().toString());
+	 pst.setString(19, txtsueldo.getText());
 
 	 pst.executeUpdate();
         }}
@@ -656,6 +695,10 @@ bus.setVisible(rootPaneCheckingEnabled);
     private void DateIngresoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DateIngresoKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_DateIngresoKeyTyped
+
+    private void combomunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combomunActionPerformed
+     
+    }//GEN-LAST:event_combomunActionPerformed
                                
    
 
@@ -723,6 +766,8 @@ bus.setVisible(rootPaneCheckingEnabled);
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblfecha;
+    private javax.swing.JLabel lblfechaing;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtcodigo;
     private javax.swing.JTextField txtcorreo;
