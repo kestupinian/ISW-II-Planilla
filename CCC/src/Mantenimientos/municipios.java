@@ -6,9 +6,15 @@ package Mantenimientos;
 
 
 import Clases.cConexion;
+import Clases.cMunicipio;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +27,33 @@ public class municipios extends javax.swing.JFrame {
      */
     public municipios() {
         initComponents();
+		mostrardatos();
+	}
+void mostrardatos(){
+	
+	DefaultTableModel   modelo = new DefaultTableModel ();
+	modelo.addColumn("Codigo");
+	modelo.addColumn("Nombre");
+	modelo.addColumn("País");
+	modelo.addColumn("Departamento");
+	tabla.setModel(modelo);
+	String []datos = new String [4];
+	try{
+		Statement st= miConexion.createStatement();
+		ResultSet rs = st.executeQuery("SELECT * FROM municipios");
+		while (rs.next()){
+		datos [0]=rs.getString(1);
+		datos [1]=rs.getString(2);
+		datos [2]=rs.getString(3);
+		datos [3]=rs.getString(4);
+		modelo.addRow(datos);
+		}
+		tabla.setModel(modelo);
+		
+	}catch (SQLException ex){
+		Logger.getLogger(municipios.class.getName()).log(Level.SEVERE, null, ex);
+	
+	}
     }
 
     /**
@@ -45,7 +78,7 @@ public class municipios extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Mantenimiento de Municipio");
@@ -67,9 +100,9 @@ public class municipios extends javax.swing.JFrame {
             }
         });
 
-        comboPais.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "El Salvador", "Item 2", "Item 3", "Item 4" }));
+        comboPais.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "El Salvador", "Guatemala", "Costa Rica", "México" }));
 
-        combodpto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combodpto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "San Salvador", "Santa Ana", "Veracruz", "Guatemala" }));
 
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -79,10 +112,15 @@ public class municipios extends javax.swing.JFrame {
         });
 
         jButton2.setText("Modificar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Eliminar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -93,7 +131,7 @@ public class municipios extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,7 +210,7 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
     }//GEN-LAST:event_txtnombreKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+cMunicipio c=new cMunicipio();
 {Connection miConexion=(Connection) cConexion.GetConnection();
         try
         {if(txtcodigo.getText().isEmpty())
@@ -190,20 +228,19 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
 {
 		JOptionPane.showMessageDialog(null,"Favor seleccionar un departamento");
 }else{
-            Statement statement=(Statement) miConexion.createStatement();
+            //Statement statement=(Statement) miConexion.createStatement();
           
-            String codigo=txtcodigo.getText();
-			String nombre=txtnombre.getText();
+            String nombre=txtnombre.getText();
 			String pais = comboPais.getSelectedItem().toString();
 			String dpto = combodpto.getSelectedItem().toString();
-           
-            //Aquí se asigna a la fecha en un formato el cual puede ser cambiado
+            c.INSERTAR(nombre, pais, dpto);
+			mostrardatos();{
                       
-            statement.execute("insert into municipios values('"+codigo+"','"+nombre+"','"+pais+"', '"+dpto+"')");
+            //statement.execute("insert into municipios values('"+codigo+"','"+nombre+"','"+pais+"', '"+dpto+"')");
           
             JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
-          
-            statement.close();
+}
+            //statement.close();
             miConexion.close();
         }}
         catch (Exception ex)
@@ -212,6 +249,17 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
         }
 }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+		cMunicipio c = new cMunicipio();
+		int codigo = Integer.parseInt(this.txtcodigo.getText());
+		String nombre = this.txtnombre.getText();
+        String pais = this.comboPais.getSelectedItem().toString();
+		String departamento = this.combodpto.getSelectedItem().toString();
+        c.MODIFICAR(codigo,nombre, pais, departamento);
+		mostrardatos();{
+		JOptionPane.showMessageDialog(null, "INFORMACION MODIFICADA");}
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,8 +307,8 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabla;
     private javax.swing.JTextField txtcodigo;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
-}
+Connection miConexion= (Connection) cConexion.GetConnection();}
