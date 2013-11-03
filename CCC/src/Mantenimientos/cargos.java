@@ -212,7 +212,8 @@ try
  }else{
             
 	 PreparedStatement pst = miConexion.prepareStatement("update cargo set nombre='"+txtnombre.getText()+"' where codigo='"+txtcodigo.getText()+"'");
-		JOptionPane.showMessageDialog(this, "Datos modificados correctamente");
+	mostrardatos();{	
+	 JOptionPane.showMessageDialog(this, "Datos modificados correctamente");}
 
 pst.executeUpdate();
 	 
