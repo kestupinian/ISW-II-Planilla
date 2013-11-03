@@ -60,7 +60,7 @@ void mostrardatos(){
         modelo.addColumn("Sueldo");
 
 	tabla.setModel(modelo);
-	String []datos = new String [19];
+	String []datos = new String [18];
 	try{
 		Statement st= miConexion.createStatement();
 		ResultSet rs = st.executeQuery("SELECT * FROM empleado");
@@ -85,6 +85,8 @@ void mostrardatos(){
                 datos [17]=rs.getString(18);
                 datos [18]=rs.getString(19);
                 datos [19]=rs.getString(20);
+                datos [20]=rs.getString(21);
+
                 modelo.addRow(datos);
 		}
 		tabla.setModel(modelo);
@@ -258,6 +260,7 @@ void mostrardatos(){
 
         jButton2.setText("Modificar");
 
+        tabla.setAutoCreateRowSorter(true);
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -458,6 +461,7 @@ void mostrardatos(){
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(292, 292, 292)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnGuardar)
@@ -466,7 +470,6 @@ void mostrardatos(){
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton3))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(292, 292, 292)
                                 .addComponent(jLabel1)
                                 .addGap(260, 260, 260)))
                         .addGap(0, 89, Short.MAX_VALUE))
@@ -673,7 +676,7 @@ void mostrardatos(){
 	 pst.setString(2, txtapellido.getText());
 	 pst.setString(3, combocivil.getSelectedItem().toString());
          pst.setString(4, lblfecha.getText());
-	 pst.setString(5, txttelefono.getText());
+         pst.setString(5, txttelefono.getText());
 	 pst.setString(6, txtcorreo.getText());
 	 pst.setString(7, txtdireccion.getText());
 	 pst.setString(8, combomun.getSelectedItem().toString());
