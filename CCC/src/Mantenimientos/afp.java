@@ -241,7 +241,7 @@ if(txtporcentaje.getText().length()>=6) evt.consume();
         
         
         //Mostrando mensaje si todo funciona bien
-        JOptionPane.showMessageDialog(null, "INFORMACION ALMACENADA");
+        JOptionPane.showMessageDialog(null, "INFORMACION MODIFICADA");
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
