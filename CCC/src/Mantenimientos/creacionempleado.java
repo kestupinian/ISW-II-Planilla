@@ -12,10 +12,15 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,8 +32,67 @@ public class creacionempleado extends javax.swing.JFrame {
      * Creates new form creacionempleado
      */
     public creacionempleado() {
-        initComponents();
+	initComponents();
+		mostrardatos();
+    }
+void mostrardatos(){
+    
+	DefaultTableModel   modelo = new DefaultTableModel ();
+	modelo.addColumn("Codigo");
+	modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+	modelo.addColumn("Estado Civil");
+        modelo.addColumn("Fecha de Nacimiento");
+	modelo.addColumn("Telefono");
+        modelo.addColumn("Correo");
+	modelo.addColumn("Dirección");
+        modelo.addColumn("Municipio");
+	modelo.addColumn("Departamento");
+        modelo.addColumn("DUI");
+	modelo.addColumn("NIT");
+        modelo.addColumn("ISSS");
+        modelo.addColumn("AFP");
+        modelo.addColumn("NUP");
+        modelo.addColumn("Fecha de ingreso");       
+        modelo.addColumn("Empresa");
+        modelo.addColumn("Nivel");
+        modelo.addColumn("Cargo");
+        modelo.addColumn("Sueldo");
+
+	tabla.setModel(modelo);
+	String []datos = new String [19];
+	try{
+		Statement st= miConexion.createStatement();
+		ResultSet rs = st.executeQuery("SELECT * FROM empleado");
+		while (rs.next()){
+		datos [0]=rs.getString(1);
+		datos [1]=rs.getString(2);
+                datos [2]=rs.getString(3);
+                datos [3]=rs.getString(4);
+                datos [4]=rs.getString(5);
+                datos [5]=rs.getString(6);
+                datos [6]=rs.getString(7);
+                datos [7]=rs.getString(8);
+                datos [8]=rs.getString(9);
+                datos [9]=rs.getString(10);
+                datos [10]=rs.getString(11);
+                datos [11]=rs.getString(12);
+                datos [12]=rs.getString(13);
+                datos [13]=rs.getString(14);
+                datos [14]=rs.getString(15);
+                datos [15]=rs.getString(16);
+                datos [16]=rs.getString(17);
+                datos [17]=rs.getString(18);
+                datos [18]=rs.getString(19);
+                datos [19]=rs.getString(20);
+                modelo.addRow(datos);
+		}
+		tabla.setModel(modelo);
 		
+	}catch (SQLException ex){
+		Logger.getLogger(creacionempleado.class.getName()).log(Level.SEVERE, null, ex);
+	
+	}
     }
 
     /**
@@ -79,7 +143,7 @@ public class creacionempleado extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         txtnombre = new javax.swing.JTextField();
         txtdui = new javax.swing.JFormattedTextField();
@@ -115,7 +179,7 @@ public class creacionempleado extends javax.swing.JFrame {
         txtcodigo.setEditable(false);
         txtcodigo.setEnabled(false);
 
-        DateFecha.setDateFormatString("yyyy/MMM/dd");
+        DateFecha.setDateFormatString("yyyy-MM-dd");
 
         txtapellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -174,7 +238,7 @@ public class creacionempleado extends javax.swing.JFrame {
 
         combonivel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Nivel 1", "Nivel 2", "Nivel 3", "Nivel 4", "Nivel 5" }));
 
-        DateIngreso.setDateFormatString("yyyy/MMM/dd");
+        DateIngreso.setDateFormatString("yyyy-MM-dd");
         DateIngreso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 DateIngresoKeyTyped(evt);
@@ -194,7 +258,7 @@ public class creacionempleado extends javax.swing.JFrame {
 
         jButton2.setText("Modificar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -205,7 +269,7 @@ public class creacionempleado extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla);
 
         jButton3.setText("Buscar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -392,21 +456,24 @@ public class creacionempleado extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(292, 292, 292)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(78, 78, 78)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(99, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnGuardar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(292, 292, 292)
+                                .addComponent(jLabel1)
+                                .addGap(260, 260, 260)))
+                        .addGap(0, 89, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -623,6 +690,7 @@ public class creacionempleado extends javax.swing.JFrame {
 	 pst.setString(19, txtsueldo.getText());
 
 	 pst.executeUpdate();
+         mostrardatos();
         }}
         catch (Exception ex)
         {
@@ -765,9 +833,9 @@ bus.setVisible(rootPaneCheckingEnabled);
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblfecha;
     private javax.swing.JLabel lblfechaing;
+    private javax.swing.JTable tabla;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtcodigo;
     private javax.swing.JTextField txtcorreo;
@@ -780,4 +848,6 @@ bus.setVisible(rootPaneCheckingEnabled);
     private javax.swing.JTextField txtsueldo;
     private javax.swing.JFormattedTextField txttelefono;
     // End of variables declaration//GEN-END:variables
+Connection miConexion= (Connection) cConexion.GetConnection();
+
 }
