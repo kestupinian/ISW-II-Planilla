@@ -54,8 +54,8 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtnombre" min="-2" pref="129" max="-2" attributes="0"/>
-                                  <Component id="txtpor" min="-2" pref="129" max="-2" attributes="0"/>
-                                  <Component id="jTextField1" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
+                                  <Component id="txtporcentaje" min="-2" pref="129" max="-2" attributes="0"/>
+                                  <Component id="txtcodigo" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -83,14 +83,14 @@
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtcodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtpor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtporcentaje" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -126,16 +126,16 @@
         <Property name="text" type="java.lang.String" value="PORCENTAJE %:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="txtcodigo">
     </Component>
     <Component class="javax.swing.JTextField" name="txtnombre">
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtnombreKeyTyped"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtpor">
+    <Component class="javax.swing.JTextField" name="txtporcentaje">
       <Events>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtporKeyTyped"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtporcentajeKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnGuardar">

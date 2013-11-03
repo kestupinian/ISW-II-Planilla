@@ -1,5 +1,7 @@
 package Mantenimientos;
 
+import Clases.cAFP;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class afp extends javax.swing.JFrame {
@@ -24,9 +26,9 @@ public class afp extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtcodigo = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
-        txtpor = new javax.swing.JTextField();
+        txtporcentaje = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -49,9 +51,9 @@ public class afp extends javax.swing.JFrame {
             }
         });
 
-        txtpor.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtporcentaje.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtporKeyTyped(evt);
+                txtporcentajeKeyTyped(evt);
             }
         });
 
@@ -109,8 +111,8 @@ public class afp extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtpor, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtporcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(106, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -129,11 +131,11 @@ public class afp extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(81, 81, 81)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtpor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtporcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
@@ -148,13 +150,28 @@ public class afp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-if(txtnombre.getText().isEmpty())
+cAFP c =new cAFP();
+		try
+{if(txtnombre.getText().isEmpty())
 {
 	JOptionPane.showMessageDialog(null,"Ingrese un nombre de AFP");
-}else if (txtpor.getText().isEmpty())
+}else if (txtporcentaje.getText().isEmpty())
 {
 	JOptionPane.showMessageDialog(null,"Favor ingresar un Porcentaje");
-}
+}else{
+	
+	    //int codigo = Integer.parseInt(this.txtcodigo.getText());
+        String nombre = this.txtnombre.getText();
+        String porcentaje = this.txtporcentaje.getText();
+
+        //Enviando los valores a la clase cEmpleado
+        c.INSERTAR(nombre, porcentaje);{
+		JOptionPane.showMessageDialog(null, "Datos Ingresados");}
+}}
+catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, "Error "+ex.getMessage());
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
@@ -162,16 +179,28 @@ char c = evt.getKeyChar();
 if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
     }//GEN-LAST:event_txtnombreKeyTyped
 
-    private void txtporKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtporKeyTyped
-char c = evt.getKeyChar();
-if(txtpor.getText().length()>=4) evt.consume();
-if((c<'0' ||c>'9'))evt.consume();
-    }//GEN-LAST:event_txtporKeyTyped
+    private void txtporcentajeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtporcentajeKeyTyped
+if(txtporcentaje.getText().length()>=6) evt.consume();
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+        char tecla;
+        tecla=evt.getKeyChar();
+        String cod= txtporcentaje.getText();
+        int punto = cod.indexOf(".")+1;
+
+        if(punto==0){
+            if(!Character.isDigit(tecla)&&tecla!= KeyEvent.VK_BACK_SPACE&&tecla!=KeyEvent.VK_PERIOD){
+                evt.consume();
+                getToolkit().beep();
+            }
+        }else{
+            if(!Character.isDigit(tecla)&&tecla!=KeyEvent.VK_BACK_SPACE){
+                evt.consume();
+                getToolkit().beep();
+                }
+   }
+    }//GEN-LAST:event_txtporcentajeKeyTyped
+
+ public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -212,8 +241,9 @@ if((c<'0' ||c>'9'))evt.consume();
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtcodigo;
     private javax.swing.JTextField txtnombre;
-    private javax.swing.JTextField txtpor;
+    private javax.swing.JTextField txtporcentaje;
     // End of variables declaration//GEN-END:variables
+
 }
