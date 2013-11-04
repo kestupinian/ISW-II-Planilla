@@ -779,7 +779,7 @@ if(tabla.getSelectedRow()>=0)
             txtsueldo.setText(datosLeidos[17]);
 
 
-                   txtdireccion.setText(datosLeidos[17]);
+            
 
             }       
         else
