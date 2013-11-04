@@ -71,7 +71,6 @@ public class departamento extends javax.swing.JFrame {
         combopais = new javax.swing.JComboBox();
         btnguardar = new javax.swing.JButton();
         btnmodificar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
 
@@ -114,8 +113,6 @@ public class departamento extends javax.swing.JFrame {
                 btnmodificarActionPerformed(evt);
             }
         });
-
-        jButton3.setText("Eliminar");
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,8 +158,7 @@ public class departamento extends javax.swing.JFrame {
                                 .addComponent(btnguardar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnmodificar)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3))
+                                .addGap(87, 87, 87))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
@@ -186,8 +182,7 @@ public class departamento extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnguardar)
-                    .addComponent(btnmodificar)
-                    .addComponent(jButton3))
+                    .addComponent(btnmodificar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
@@ -298,7 +293,6 @@ try
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnmodificar;
     private javax.swing.JComboBox combopais;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
