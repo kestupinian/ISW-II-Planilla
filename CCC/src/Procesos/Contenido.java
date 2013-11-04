@@ -472,6 +472,8 @@ cadel.setVisible(rootPaneCheckingEnabled);
 creacionempleado cemp = new creacionempleado();
 cemp.setLocationRelativeTo(null);
 cemp.setVisible(rootPaneCheckingEnabled);
+cemp.setExtendedState(cemp.MAXIMIZED_BOTH);
+
     }//GEN-LAST:event_ProCEmpActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
