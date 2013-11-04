@@ -94,6 +94,14 @@ void mostrardatos(){
 
         jLabel5.setText("DEPARTAMENTO:");
 
+        txtcodigo.setEditable(false);
+        txtcodigo.setEnabled(false);
+        txtcodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcodigoActionPerformed(evt);
+            }
+        });
+
         txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtnombreKeyTyped(evt);
@@ -217,7 +225,7 @@ void mostrardatos(){
 
     private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
 char c = evt.getKeyChar();
-if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
+if ((c<'a' || c>'z')&& (c<'A'|| c>'z')&& (c<' '|| c>' ')) evt.consume();
     }//GEN-LAST:event_txtnombreKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -293,6 +301,10 @@ if(tabla.getSelectedRow()>=0)
             JOptionPane.showMessageDialog(this, "Debe seleccionar un registro");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcodigoActionPerformed
 
     /**
      * @param args the command line arguments
