@@ -828,8 +828,64 @@ if(tabla.getSelectedRow()>=0)
 
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
        cEmpleado c = new cEmpleado();
+try
+	{ if (txtnombre.getText().equals(""))
+{
+	JOptionPane.showMessageDialog(null, "Ingrese nombre");
+} else if (txtapellido.getText().equals(""))
+{
+	JOptionPane.showMessageDialog(null, "Ingrese apellido");
+    
+ } else if (combocivil.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccione un estado civil");
+	
+}else if (txttelefono.getText().equals(""))
+{
+	JOptionPane.showMessageDialog(null, "Ingrese numero de telefono");
+}else if (txtcorreo.getText().equals(""))
+{
+	JOptionPane.showMessageDialog(null, "Ingrese dirección de correo");
+}else if (txtdireccion.getText().equals(""))
+{
+	JOptionPane.showMessageDialog(null, "Ingrese dirección");
+}else if (combomun.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccione municipio");
+}else if (combodpto.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccione Departamento");
+}else if (txtdui.getText().equals(""))
+{
+	JOptionPane.showMessageDialog(null, "Ingrese número de DUI");
+}else if (txtnit.getText().equals(""))
+{
+	JOptionPane.showMessageDialog(null, "Ingrese número de NIT");
+}else if (txtisss.getText().equals(""))
+{
+	JOptionPane.showMessageDialog(null, "Ingrese número de ISSS");
+}else if (comboafp.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccione AFP");
+}else if (txtnup.getText().equals(""))
+{
+	JOptionPane.showMessageDialog(null, "Ingrese número de NUP");
+}else if (comboempresa.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccione Empresa");
+}else if (combonivel.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccione Nivel");
+	
+}else if (combocargo.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccione Cargo");
+}else if (txtsueldo.getText().equals(""))
+{
+	JOptionPane.showMessageDialog(null, "Ingrese el sueldo");
+}else {
 		int codigo = Integer.parseInt(this.txtcodigo.getText());
-		String nombre = this.txtnombre.getText();
+				String nombre = this.txtnombre.getText();
                 String apellido = this.txtapellido.getText();
                 String estado_civil = this.combocivil.getSelectedItem().toString();
                 //String fechanacimiento = this.lblfecha.getText();
@@ -837,7 +893,7 @@ if(tabla.getSelectedRow()>=0)
                 String correo = this.txtcorreo.getText();      
                 String direccion = this.txtdireccion.getText();
                 String municipio = this.combomun.getSelectedItem().toString();
-		String departamento = this.combodpto.getSelectedItem().toString();
+				String departamento = this.combodpto.getSelectedItem().toString();
                 String dui = this.txtdui.getText(); 
                 String nit = this.txtnit.getText();    
                 String isss = this.txtisss.getText();
@@ -849,9 +905,13 @@ if(tabla.getSelectedRow()>=0)
                 String cargo= this.combocargo.getSelectedItem().toString();
                 String sueldo = this.txtsueldo.getText(); 
 c.MODIFICAR(codigo, nombre, apellido, estado_civil, telefono, correo, direccion, municipio, departamento, dui, nit, isss, afp, nup, empresa, nivel, cargo, sueldo);
-                mostrardatos();{
-		JOptionPane.showMessageDialog(null, "INFORMACION MODIFICADA");}
-    
+	JOptionPane.showMessageDialog(null, "INFORMACION MODIFICADA");}                
+				mostrardatos();{
+	    }}
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, "Error "+ex.getMessage());
+        }
     }//GEN-LAST:event_btnmodificarActionPerformed
                                
    
