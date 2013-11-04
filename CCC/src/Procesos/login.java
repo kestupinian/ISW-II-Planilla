@@ -4,7 +4,9 @@
  */
 package Procesos;
 
+import static javax.swing.JFrame.setDefaultLookAndFeelDecorated;
 import javax.swing.JOptionPane;
+import org.jvnet.substance.SubstanceLookAndFeel;
 
 /**
  *
@@ -38,7 +40,7 @@ public class login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Usuario");
 
@@ -159,6 +161,9 @@ else
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				setDefaultLookAndFeelDecorated(true);
+                        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin");
+                        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
 				new login().setVisible(true);
 			}
 		});
