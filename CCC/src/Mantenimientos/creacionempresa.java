@@ -347,7 +347,7 @@ void mostrardatos(){
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -444,8 +444,7 @@ try
 JOptionPane.showMessageDialog(null, "Favor escribir el número de registro fiscal");
  
     }//GEN-LAST:event_btnguardarActionPerformed
-
-        else{
+else{
     PreparedStatement pst = miConexion.prepareStatement("insert into empresa (nombre, direccion, municipio, departamento, telefono, nit, registro) values (?,?,?,?,?,?,?)");
 		JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
 	 pst.setString(1, txtnombre.getText());
@@ -496,6 +495,31 @@ if (c<'0' || c>'9') evt.consume();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         cEmpresa c = new cEmpresa();
+try
+    
+{if (txtnombre.getText().isEmpty())
+{
+		JOptionPane.showMessageDialog(null,"Favor escribir un nombre");
+}else if (txtdireccion.getText().isEmpty())
+{
+		JOptionPane.showMessageDialog(null,"Favor escribir una dirección");
+}else if (combomun.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null,"Favor seleccionar un municipio");
+}else if(combodpto.getSelectedItem().equals("Seleccionar"))
+{
+	JOptionPane.showMessageDialog(null, "Favor seleccionar un departamento");
+}else if (txttelefono.getText().isEmpty())
+{
+	JOptionPane.showMessageDialog(null, "Favor escribir el número de teléfono");
+}else if(txtnit.getText().isEmpty())
+{
+	JOptionPane.showMessageDialog(null, "Favor escribir el número de NIT");
+}else if(txtregistro.getText().isEmpty())
+{
+JOptionPane.showMessageDialog(null, "Favor escribir el número de registro fiscal");
+ 
+}else{
 		int codigo = Integer.parseInt(this.txtcodigo.getText());
 		String nombre = this.txtnombre.getText();
                 String direccion = this.txtdireccion.getText();
@@ -505,10 +529,13 @@ if (c<'0' || c>'9') evt.consume();
                 String nit = this.txtnit.getText();    
                 String registro = this.txtregistro.getText();
 c.MODIFICAR(codigo, nombre, direccion, municipio, departamento, telefono, nit, registro);
-                mostrardatos();{
-        
-		JOptionPane.showMessageDialog(null, "INFORMACION MODIFICADA");}
-    
+JOptionPane.showMessageDialog(null, "INFORMACION MODIFICADA");}                
+               mostrardatos();{
+	    }}
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, "Error "+ex.getMessage());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
