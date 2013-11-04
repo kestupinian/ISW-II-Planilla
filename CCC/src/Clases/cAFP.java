@@ -11,6 +11,7 @@ package Clases;
 public class cAFP {
 	cConexion1 c = new cConexion1();
 
+
 public void INSERTAR (String nombre, String porcentaje){
 	
  c.UID("INSERT INTO afp(nombre, porcentaje) values('"+nombre+"','"+porcentaje+"')");
