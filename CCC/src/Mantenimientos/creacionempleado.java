@@ -776,7 +776,7 @@ bus.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_combomunActionPerformed
 
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
-       cEmpleado ce = new cEmpleado();
+       cEmpleado c = new cEmpleado();
 		int codigo = Integer.parseInt(this.txtcodigo.getText());
 		String nombre = this.txtnombre.getText();
                 String apellido = this.txtapellido.getText();
@@ -797,7 +797,8 @@ bus.setVisible(rootPaneCheckingEnabled);
                 String nivel= this.combonivel.getSelectedItem().toString();
                 String cargo= this.combocargo.getSelectedItem().toString();
                 String sueldo = this.txtsueldo.getText(); 
-ce.MODIFICAR(codigo, nombre, apellido, estado_civil, fechanacimiento, telefono, correo, direccion, municipio, departamento, dui, nit, isss, afp, nup, fechaingreso, empresa, nivel, cargo, sueldo);
+c.MODIFICAR(codigo, nombre, apellido, estado_civil, fechanacimiento, telefono, correo, direccion, municipio, departamento, dui, nit, isss, afp, nup, fechaingreso, empresa, nivel, cargo, sueldo);
+//ce.MODIFICAR(codigo, nombre, apellido, estado_civil, fechanacimiento, telefono, correo, direccion, municipio, departamento, dui, nit, isss, afp, nup, fechaingreso, empresa, nivel, cargo, sueldo);
                                         
 mostrardatos();{
 		JOptionPane.showMessageDialog(null, "INFORMACION MODIFICADA");}
