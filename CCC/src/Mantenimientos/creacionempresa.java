@@ -5,9 +5,17 @@
 package Mantenimientos;
 
 import Clases.cConexion;
+import Clases.cEmpleado;
+import Clases.cEmpresa;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +28,44 @@ public class creacionempresa extends javax.swing.JFrame {
      */
     public creacionempresa() {
         initComponents();
+        mostrardatos();
+    }
+void mostrardatos(){
+    
+	DefaultTableModel   modelo = new DefaultTableModel ();
+	modelo.addColumn("Codigo");
+	modelo.addColumn("Nombre");
+       	modelo.addColumn("Dirección");
+        modelo.addColumn("Municipio");
+	modelo.addColumn("Departamento");
+        modelo.addColumn("Telefono");
+	modelo.addColumn("NIT");
+        modelo.addColumn("N° Registro Fiscal");
+        
+        tabla.setModel(modelo);
+	String []datos = new String [8];
+	try{
+		Statement st= miConexion.createStatement();
+		ResultSet rs = st.executeQuery("SELECT * FROM empresa");
+		while (rs.next()){
+		datos [0]=rs.getString(1);
+		datos [1]=rs.getString(2);
+                datos [2]=rs.getString(3);
+                datos [3]=rs.getString(4);
+                datos [4]=rs.getString(5);
+                datos [5]=rs.getString(6);
+                datos [6]=rs.getString(7);
+                datos [7]=rs.getString(8);
+                
+                
+                modelo.addRow(datos);
+		}
+		tabla.setModel(modelo);
+		
+	}catch (SQLException ex){
+		Logger.getLogger(creacionempresa.class.getName()).log(Level.SEVERE, null, ex);
+	
+	}
     }
 
     /**
@@ -33,7 +79,7 @@ public class creacionempresa extends javax.swing.JFrame {
 
         grupo1 = new javax.swing.ButtonGroup();
         grupo2 = new javax.swing.ButtonGroup();
-        txtreg = new javax.swing.JTextField();
+        txtregistro = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -41,17 +87,17 @@ public class creacionempresa extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtcodigo = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         combodpto = new javax.swing.JComboBox();
         txtdireccion = new javax.swing.JTextField();
         combomun = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        txtempresa = new javax.swing.JTextField();
+        txtnombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         btnguardar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         activa = new javax.swing.JRadioButton();
@@ -64,12 +110,13 @@ public class creacionempresa extends javax.swing.JFrame {
         jCheckBox6 = new javax.swing.JCheckBox();
         txttelefono = new javax.swing.JFormattedTextField();
         txtnit = new javax.swing.JFormattedTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        txtreg.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtregistro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtregKeyTyped(evt);
+                txtregistroKeyTyped(evt);
             }
         });
 
@@ -81,14 +128,13 @@ public class creacionempresa extends javax.swing.JFrame {
 
         jLabel10.setText("NIT");
 
-        jLabel2.setText("Id empresa");
+        jLabel2.setText("Codigo");
 
         jLabel3.setText("Nombre de empresa");
 
         jLabel8.setText("Nivel asignado");
 
-        jTextField1.setEditable(false);
-        jTextField1.setEnabled(false);
+        txtcodigo.setEditable(false);
 
         jLabel14.setText("Municipio");
 
@@ -105,17 +151,27 @@ public class creacionempresa extends javax.swing.JFrame {
         jLabel15.setText("Departamento");
 
         jButton1.setText("Modificar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        txtempresa.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnombreActionPerformed(evt);
+            }
+        });
+        txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtempresaKeyTyped(evt);
+                txtnombreKeyTyped(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("CREACION DE EMPRESA");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -126,7 +182,7 @@ public class creacionempresa extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla);
 
         btnguardar.setText("Guardar");
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
@@ -232,6 +288,13 @@ public class creacionempresa extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jButton2.setText("Leer");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -248,9 +311,9 @@ public class creacionempresa extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1)
+                        .addComponent(txtcodigo)
                         .addComponent(txtdireccion)
-                        .addComponent(txtempresa)
+                        .addComponent(txtnombre)
                         .addComponent(combodpto, 0, 184, Short.MAX_VALUE)
                         .addComponent(combomun, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -265,24 +328,26 @@ public class creacionempresa extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txttelefono, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtnit, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtreg, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtregistro, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(131, 131, 131))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnguardar)
-                .addGap(32, 32, 32)
-                .addComponent(jButton1)
-                .addGap(85, 85, 85))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnguardar)
+                        .addGap(17, 17, 17)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(281, 281, 281)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +367,6 @@ public class creacionempresa extends javax.swing.JFrame {
                                 .addComponent(jLabel14)
                                 .addGap(16, 16, 16))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(combomun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,9 +383,9 @@ public class creacionempresa extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
@@ -336,7 +400,7 @@ public class creacionempresa extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel13)
-                                    .addComponent(txtreg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtregistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
@@ -344,7 +408,8 @@ public class creacionempresa extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnguardar)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
@@ -356,7 +421,7 @@ public class creacionempresa extends javax.swing.JFrame {
 {Connection miConexion=(Connection) cConexion.GetConnection(); 
 try
     
-{if (txtempresa.getText().isEmpty())
+{if (txtnombre.getText().isEmpty())
 {
 		JOptionPane.showMessageDialog(null,"Favor escribir un nombre");
 }else if (txtdireccion.getText().isEmpty())
@@ -374,7 +439,7 @@ try
 }else if(txtnit.getText().isEmpty())
 {
 	JOptionPane.showMessageDialog(null, "Favor escribir el número de NIT");
-}else if(txtreg.getText().isEmpty())
+}else if(txtregistro.getText().isEmpty())
 {
 JOptionPane.showMessageDialog(null, "Favor escribir el número de registro fiscal");
  
@@ -383,17 +448,19 @@ JOptionPane.showMessageDialog(null, "Favor escribir el número de registro fisca
         else{
     PreparedStatement pst = miConexion.prepareStatement("insert into empresa (nombre, direccion, municipio, departamento, telefono, nit, registro) values (?,?,?,?,?,?,?)");
 		JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
-	 pst.setString(1, txtempresa.getText());
+	 pst.setString(1, txtnombre.getText());
 	 pst.setString(2, txtdireccion.getText());
 	 pst.setString(3, combomun.getSelectedItem().toString());
 	 pst.setString(4, combodpto.getSelectedItem().toString());
         // pst.setString(9, nivel.getSelectedItem().toString());
 	 pst.setString(5, txttelefono.getText());
 	 pst.setString(6, txtnit.getText());
-	 pst.setString(7, txtreg.getText());
+	 pst.setString(7, txtregistro.getText());
         // pst.setString(9, estado.getSelectedItem().toString());
 
          pst.executeUpdate();
+                  mostrardatos();
+
         }}
         catch (Exception ex)
         {
@@ -404,20 +471,19 @@ JOptionPane.showMessageDialog(null, "Favor escribir el número de registro fisca
   }
 }
     
-    private void txtempresaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtempresaKeyTyped
+    private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
 char c = evt.getKeyChar();
-if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
-    }//GEN-LAST:event_txtempresaKeyTyped
+if ((c<'a' || c>'z')&& (c<'A'|| c>'Z')&& (c<' '|| c>'.')) evt.consume();
+    }//GEN-LAST:event_txtnombreKeyTyped
 
     private void txtdireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdireccionKeyTyped
-char c = evt.getKeyChar();
-if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
+
     }//GEN-LAST:event_txtdireccionKeyTyped
 
-    private void txtregKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtregKeyTyped
+    private void txtregistroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtregistroKeyTyped
 char c = evt.getKeyChar();
 if (c<'0' || c>'9') evt.consume();
-    }//GEN-LAST:event_txtregKeyTyped
+    }//GEN-LAST:event_txtregistroKeyTyped
 
     private void activaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activaActionPerformed
     activa.setSelected(true);
@@ -427,6 +493,60 @@ if (c<'0' || c>'9') evt.consume();
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        cEmpresa c = new cEmpresa();
+		int codigo = Integer.parseInt(this.txtcodigo.getText());
+		String nombre = this.txtnombre.getText();
+                String direccion = this.txtdireccion.getText();
+                String municipio = this.combomun.getSelectedItem().toString();
+               	String departamento = this.combodpto.getSelectedItem().toString();
+                String telefono = this.txttelefono.getText(); 
+                String nit = this.txtnit.getText();    
+                String registro = this.txtregistro.getText();
+c.MODIFICAR(codigo, nombre, direccion, municipio, departamento, telefono, nit, registro);
+                mostrardatos();{
+        
+		JOptionPane.showMessageDialog(null, "INFORMACION MODIFICADA");}
+    
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombreActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      if(tabla.getSelectedRow()>=0)
+           {
+           String[] datosLeidos=
+            {
+             String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 0)),
+			 String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 1)),
+			 String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 2)),
+			 String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 3)),
+			 String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 4)),
+                         String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 5)),
+                         String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 6)),
+                         String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 7)),
+                        
+         
+             };
+            txtcodigo.setText(datosLeidos[0]);
+            txtnombre.setText(datosLeidos[1]);
+            txtdireccion.setText(datosLeidos[2]);
+            combomun.setSelectedItem(datosLeidos[3]);
+            combodpto.setSelectedItem(datosLeidos[4]);
+            txttelefono.setText(datosLeidos[5]);
+            txtnit.setText(datosLeidos[6]);
+            txtregistro.setText(datosLeidos[7]);
+            
+            }       
+        else
+        {
+             JOptionPane.showMessageDialog(this, "Debe seleccionar un registro");
+        
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -450,6 +570,7 @@ if (c<'0' || c>'9') evt.consume();
     private javax.swing.ButtonGroup grupo2;
     private javax.swing.JRadioButton inactiva;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
@@ -468,12 +589,13 @@ if (c<'0' || c>'9') evt.consume();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tabla;
+    private javax.swing.JTextField txtcodigo;
     private javax.swing.JTextField txtdireccion;
-    private javax.swing.JTextField txtempresa;
     private javax.swing.JFormattedTextField txtnit;
-    private javax.swing.JTextField txtreg;
+    private javax.swing.JTextField txtnombre;
+    private javax.swing.JTextField txtregistro;
     private javax.swing.JFormattedTextField txttelefono;
     // End of variables declaration//GEN-END:variables
+Connection miConexion= (Connection) cConexion.GetConnection();
 }
