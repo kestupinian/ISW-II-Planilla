@@ -663,15 +663,15 @@ void mostrardatos(){
 	JOptionPane.showMessageDialog(null, "Ingrese el sueldo");
 }else {
     
-    //String formato = "yyyy/MM/dd";
-      // Date date = DateFecha.getDate();
-       //SimpleDateFormat sdf = new SimpleDateFormat (formato);
-      //lblfecha.setText(sdf.format(date));
+    String formato = "yyyy/MM/dd";
+     Date date = DateFecha.getDate();
+    SimpleDateFormat sdf = new SimpleDateFormat (formato);
+    lblfecha.setText(sdf.format(date));
     
-      //String formato1 = "yyyy/MM/dd";
-       //Date date1 = DateIngreso.getDate();
-       //SimpleDateFormat sdf1 = new SimpleDateFormat (formato1);
-      //lblfechaing.setText(sdf1.format(date1));
+    String formato1 = "yyyy/MM/dd";
+    Date date1 = DateIngreso.getDate();
+    SimpleDateFormat sdf1 = new SimpleDateFormat (formato1);
+    lblfechaing.setText(sdf1.format(date1));
       
 		PreparedStatement pst = miConexion.prepareStatement("insert into empleado (nombre, apellido, estado_civil, telefono, correo, direccion, municipio, departamento, dui, nit, isss, afp, nup, empresa, nivel, cargo, sueldo, fechanacimiento, fechaingreso) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		
