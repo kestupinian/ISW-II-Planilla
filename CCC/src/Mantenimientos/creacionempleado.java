@@ -5,6 +5,8 @@
 package Mantenimientos;
 
 import Clases.cConexion;
+import Clases.cEmpleado;
+import Clases.cMunicipio;
 import org.jvnet.substance.SubstanceLookAndFeel;
 import Procesos.busqueda;
 import javax.swing.JOptionPane;
@@ -143,7 +145,7 @@ void mostrardatos(){
         combocargo = new javax.swing.JComboBox();
         combocivil = new javax.swing.JComboBox();
         btnGuardar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnmodificar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
@@ -177,9 +179,6 @@ void mostrardatos(){
         jLabel5.setText("Fecha de nacimiento");
 
         jLabel6.setText("Teléfono");
-
-        txtcodigo.setEditable(false);
-        txtcodigo.setEnabled(false);
 
         DateFecha.setDateFormatString("yyyy-MM-dd");
 
@@ -258,7 +257,12 @@ void mostrardatos(){
             }
         });
 
-        jButton2.setText("Modificar");
+        btnmodificar.setText("Modificar");
+        btnmodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmodificarActionPerformed(evt);
+            }
+        });
 
         tabla.setAutoCreateRowSorter(true);
         tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -466,7 +470,7 @@ void mostrardatos(){
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnGuardar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2)
+                                .addComponent(btnmodificar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton3))
                             .addGroup(layout.createSequentialGroup()
@@ -580,7 +584,7 @@ void mostrardatos(){
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
-                    .addComponent(jButton2)
+                    .addComponent(btnmodificar)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -770,6 +774,35 @@ bus.setVisible(rootPaneCheckingEnabled);
     private void combomunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combomunActionPerformed
      
     }//GEN-LAST:event_combomunActionPerformed
+
+    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+       cEmpleado ce = new cEmpleado();
+		int codigo = Integer.parseInt(this.txtcodigo.getText());
+		String nombre = this.txtnombre.getText();
+                String apellido = this.txtapellido.getText();
+                String estado_civil = this.combocivil.getSelectedItem().toString();
+                String fechanacimiento = this.lblfecha.getText();
+                String telefono = this.txttelefono.getText(); 
+                String correo = this.txtcorreo.getText();      
+                String direccion = this.txtdireccion.getText();
+                String municipio = this.combomun.getSelectedItem().toString();
+		String departamento = this.combodpto.getSelectedItem().toString();
+                String dui = this.txtdui.getText(); 
+                String nit = this.txtnit.getText();    
+                String isss = this.txtisss.getText();
+                String afp= this.comboafp.getSelectedItem().toString();
+                String nup = this.txtnup.getText(); 
+                String fechaingreso = this.lblfechaing.getText();
+                String empresa= this.comboempresa.getSelectedItem().toString();
+                String nivel= this.combonivel.getSelectedItem().toString();
+                String cargo= this.combocargo.getSelectedItem().toString();
+                String sueldo = this.txtsueldo.getText(); 
+ce.MODIFICAR(codigo, nombre, apellido, estado_civil, fechanacimiento, telefono, correo, direccion, municipio, departamento, dui, nit, isss, afp, nup, fechaingreso, empresa, nivel, cargo, sueldo);
+                                        
+mostrardatos();{
+		JOptionPane.showMessageDialog(null, "INFORMACION MODIFICADA");}
+    
+    }//GEN-LAST:event_btnmodificarActionPerformed
                                
    
 
@@ -802,6 +835,7 @@ bus.setVisible(rootPaneCheckingEnabled);
     private com.toedter.calendar.JDateChooser DateIngreso;
     private javax.swing.ButtonGroup GrupoEstado;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnmodificar;
     private javax.swing.JComboBox comboafp;
     private javax.swing.JComboBox combocargo;
     private javax.swing.JComboBox combocivil;
@@ -809,7 +843,6 @@ bus.setVisible(rootPaneCheckingEnabled);
     private javax.swing.JComboBox comboempresa;
     private javax.swing.JComboBox combomun;
     private javax.swing.JComboBox combonivel;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

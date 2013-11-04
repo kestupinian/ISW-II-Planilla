@@ -115,7 +115,7 @@
                           <Group type="102" attributes="0">
                               <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnmodificar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -262,7 +262,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnmodificar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -307,10 +307,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtcodigo">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="DateFecha">
       <Properties>
@@ -525,10 +521,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btnmodificar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnmodificarActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
