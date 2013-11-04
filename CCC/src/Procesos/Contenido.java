@@ -33,6 +33,8 @@ public class Contenido extends javax.swing.JFrame {
 	 */
 	public Contenido() {
 		initComponents();
+		this.setExtendedState(this.MAXIMIZED_BOTH);
+
 	}
 
 	/**
@@ -342,6 +344,8 @@ public class Contenido extends javax.swing.JFrame {
 		ConsultaPermisos reg = new ConsultaPermisos();
 		reg.setLocationRelativeTo(null);
 		reg.setVisible(rootPaneCheckingEnabled);
+		
+
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
