@@ -5,7 +5,7 @@
 package Procesos;
 
 import javax.swing.JOptionPane;
-
+import org.jvnet.substance.SubstanceLookAndFeel;
 /**
  *
  * @author mercedes Moreno
@@ -157,6 +157,10 @@ if (combotipo.getSelectedItem().equals("Seleccionar"))
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                setDefaultLookAndFeelDecorated(true);
+                        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin");
+                        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
+
                 new Generarplanilla().setVisible(true);
             }
         });

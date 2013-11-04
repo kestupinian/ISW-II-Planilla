@@ -6,9 +6,15 @@ package Mantenimientos;
 
 
 import Clases.cConexion;
+import Clases.cMunicipio;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +27,33 @@ public class municipios extends javax.swing.JFrame {
      */
     public municipios() {
         initComponents();
+		mostrardatos();
+	}
+void mostrardatos(){
+	
+	DefaultTableModel   modelo = new DefaultTableModel ();
+	modelo.addColumn("Codigo");
+	modelo.addColumn("Nombre");
+	modelo.addColumn("País");
+	modelo.addColumn("Departamento");
+	tabla.setModel(modelo);
+	String []datos = new String [4];
+	try{
+		Statement st= miConexion.createStatement();
+		ResultSet rs = st.executeQuery("SELECT * FROM municipios");
+		while (rs.next()){
+		datos [0]=rs.getString(1);
+		datos [1]=rs.getString(2);
+		datos [2]=rs.getString(3);
+		datos [3]=rs.getString(4);
+		modelo.addRow(datos);
+		}
+		tabla.setModel(modelo);
+		
+	}catch (SQLException ex){
+		Logger.getLogger(municipios.class.getName()).log(Level.SEVERE, null, ex);
+	
+	}
     }
 
     /**
@@ -45,7 +78,7 @@ public class municipios extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Mantenimiento de Municipio");
@@ -61,15 +94,23 @@ public class municipios extends javax.swing.JFrame {
 
         jLabel5.setText("DEPARTAMENTO:");
 
+        txtcodigo.setEditable(false);
+        txtcodigo.setEnabled(false);
+        txtcodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcodigoActionPerformed(evt);
+            }
+        });
+
         txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtnombreKeyTyped(evt);
             }
         });
 
-        comboPais.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "El Salvador", "Item 2", "Item 3", "Item 4" }));
+        comboPais.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "El Salvador", "Guatemala", "Costa Rica", "México" }));
 
-        combodpto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combodpto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "San Salvador", "Santa Ana", "Veracruz", "Guatemala" }));
 
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -79,10 +120,20 @@ public class municipios extends javax.swing.JFrame {
         });
 
         jButton2.setText("Modificar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Eliminar");
+        jButton3.setText("Leer");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -92,8 +143,16 @@ public class municipios extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabla);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,17 +160,8 @@ public class municipios extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(12, 12, 12)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51))))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -129,7 +179,14 @@ public class municipios extends javax.swing.JFrame {
                             .addComponent(combodpto, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jButton1)
+                        .addGap(12, 12, 12)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -153,12 +210,12 @@ public class municipios extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(combodpto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -168,11 +225,11 @@ public class municipios extends javax.swing.JFrame {
 
     private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
 char c = evt.getKeyChar();
-if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
+if ((c<'a' || c>'z')&& (c<'A'|| c>'z')&& (c<' '|| c>' ')) evt.consume();
     }//GEN-LAST:event_txtnombreKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+cMunicipio c=new cMunicipio();
 {Connection miConexion=(Connection) cConexion.GetConnection();
         try
         {if(txtcodigo.getText().isEmpty())
@@ -190,20 +247,19 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
 {
 		JOptionPane.showMessageDialog(null,"Favor seleccionar un departamento");
 }else{
-            Statement statement=(Statement) miConexion.createStatement();
+            //Statement statement=(Statement) miConexion.createStatement();
           
-            String codigo=txtcodigo.getText();
-			String nombre=txtnombre.getText();
+            String nombre=txtnombre.getText();
 			String pais = comboPais.getSelectedItem().toString();
 			String dpto = combodpto.getSelectedItem().toString();
-           
-            //Aquí se asigna a la fecha en un formato el cual puede ser cambiado
+            c.INSERTAR(nombre, pais, dpto);
+			mostrardatos();{
                       
-            statement.execute("insert into municipios values('"+codigo+"','"+nombre+"','"+pais+"', '"+dpto+"')");
+            //statement.execute("insert into municipios values('"+codigo+"','"+nombre+"','"+pais+"', '"+dpto+"')");
           
             JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
-          
-            statement.close();
+}
+            //statement.close();
             miConexion.close();
         }}
         catch (Exception ex)
@@ -212,6 +268,43 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
         }
 }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+		cMunicipio c = new cMunicipio();
+		int codigo = Integer.parseInt(this.txtcodigo.getText());
+		String nombre = this.txtnombre.getText();
+        String pais = this.comboPais.getSelectedItem().toString();
+		String departamento = this.combodpto.getSelectedItem().toString();
+        c.MODIFICAR(codigo,nombre, pais, departamento);
+		mostrardatos();{
+		JOptionPane.showMessageDialog(null, "INFORMACION MODIFICADA");}
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+if(tabla.getSelectedRow()>=0)
+        {
+           String[] datosLeidos=
+            {
+             String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 0)),
+			 String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 1)),
+			 String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 2)),
+			 String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 3))
+			 
+             
+             };
+            txtcodigo.setText(datosLeidos[0]);
+            txtnombre.setText(datosLeidos[1]);
+            
+            }       
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un registro");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcodigoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,8 +352,8 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabla;
     private javax.swing.JTextField txtcodigo;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
-}
+Connection miConexion= (Connection) cConexion.GetConnection();}

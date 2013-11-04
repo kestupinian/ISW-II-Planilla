@@ -8,7 +8,13 @@ package Mantenimientos;
 import Clases.cConexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
         
@@ -23,7 +29,29 @@ public class cargos extends javax.swing.JFrame {
      */
     public cargos() {
         initComponents();
+		mostrardatos();
     }
+void mostrardatos(){
+	DefaultTableModel   modelo = new DefaultTableModel ();
+	modelo.addColumn("Codigo");
+	modelo.addColumn("nombre");
+	tabla.setModel(modelo);
+	String []datos = new String [3];
+	try{
+		Statement st= miConexion.createStatement();
+		ResultSet rs = st.executeQuery("SELECT * FROM cargo");
+		while (rs.next()){
+		datos [0]=rs.getString(1);
+		datos [1]=rs.getString(2);
+		modelo.addRow(datos);
+		}
+		tabla.setModel(modelo);
+		
+	}catch (SQLException ex){
+		Logger.getLogger(cargos.class.getName()).log(Level.SEVERE, null, ex);
+	
+	}
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,16 +64,16 @@ public class cargos extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtcargos = new javax.swing.JTextField();
+        txtcodigo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
         btnguardar = new javax.swing.JButton();
         btnmodificar = new javax.swing.JButton();
         btneliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Mantenimiento Cargos");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -75,14 +103,14 @@ public class cargos extends javax.swing.JFrame {
             }
         });
 
-        btneliminar.setText("Eliminar");
+        btneliminar.setText("Leer");
         btneliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btneliminarActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -93,7 +121,7 @@ public class cargos extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,7 +137,7 @@ public class cargos extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtcargos, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtnombre, javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,12 +145,12 @@ public class cargos extends javax.swing.JFrame {
                                         .addComponent(btnguardar)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnmodificar)))
-                                .addGap(24, 24, 24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btneliminar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,7 +160,7 @@ public class cargos extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(txtcargos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -142,9 +170,9 @@ public class cargos extends javax.swing.JFrame {
                     .addComponent(btnguardar)
                     .addComponent(btnmodificar)
                     .addComponent(btneliminar))
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -167,6 +195,7 @@ if ((c<'a' || c>'z')&& (c<'A'|| c>'z')) evt.consume();
 		JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
 	 pst.setString(1, txtnombre.getText());
 	  pst.executeUpdate();
+	  mostrardatos();
 	 
 	 }}
         catch (Exception ex)
@@ -182,10 +211,11 @@ try
 		JOptionPane.showMessageDialog(null,"Favor ingrese un nombre");
  }else{
             
-	 PreparedStatement pst = miConexion.prepareStatement("update into cargo (nombre) values (?)");
-		JOptionPane.showMessageDialog(this, "Datos modificados correctamente");
-	 pst.setString(1, txtnombre.getText());
-	  pst.executeUpdate();
+	 PreparedStatement pst = miConexion.prepareStatement("update cargo set nombre='"+txtnombre.getText()+"' where codigo='"+txtcodigo.getText()+"'");
+	mostrardatos();{	
+	 JOptionPane.showMessageDialog(this, "Datos modificados correctamente");}
+
+pst.executeUpdate();
 	 
 	 }}
         catch (Exception ex)
@@ -195,7 +225,20 @@ try
     }//GEN-LAST:event_btnmodificarActionPerformed
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
-        
+if(tabla.getSelectedRow()>=0)
+        {
+           String[] datosLeidos=
+            {
+             String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 0)),
+			 String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 1))             
+             };
+            txtcodigo.setText(datosLeidos[0]);
+            txtnombre.setText(datosLeidos[1]);
+                    }       
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un registro");
+        }
     }//GEN-LAST:event_btneliminarActionPerformed
 /**
      * @param args the command line arguments
@@ -239,8 +282,8 @@ try
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtcargos;
+    private javax.swing.JTable tabla;
+    private javax.swing.JTextField txtcodigo;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 Connection miConexion= (Connection) cConexion.GetConnection();

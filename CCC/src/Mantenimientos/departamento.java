@@ -5,8 +5,15 @@
 package Mantenimientos;
 
 import Clases.cConexion;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +26,31 @@ public class departamento extends javax.swing.JFrame {
      */
     public departamento() {
         initComponents();
+		mostrardatos();
+	}
+		
+	void mostrardatos(){
+	DefaultTableModel   modelo = new DefaultTableModel ();
+	modelo.addColumn("Codigo");
+	modelo.addColumn("Nombre");
+	modelo.addColumn("País");
+	tabla.setModel(modelo);
+	String []datos = new String [3];
+	try{
+		Statement st= miConexion.createStatement();
+		ResultSet rs = st.executeQuery("SELECT * FROM departamento");
+		while (rs.next()){
+		
+		datos [0]=rs.getString(1);
+		datos [1]=rs.getString(2);
+		datos [2]=rs.getString(3);
+		modelo.addRow(datos);
+		}
+		tabla.setModel(modelo);
+		
+	}catch (SQLException ex){
+		Logger.getLogger(departamento.class.getName()).log(Level.SEVERE, null, ex);
+	}
     }
 
     /**
@@ -41,7 +73,7 @@ public class departamento extends javax.swing.JFrame {
         btnmodificar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -85,7 +117,7 @@ public class departamento extends javax.swing.JFrame {
 
         jButton3.setText("Eliminar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -96,7 +128,7 @@ public class departamento extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,6 +221,7 @@ try
 	 pst.setString(1, txtnombre.getText());
 	 pst.setString(2, combopais.getSelectedItem().toString());
 	 pst.executeUpdate();
+	 mostrardatos();
 	 
 	 //Statement statement=(Statement) miConexion.createStatement();
             //statement.execute("insert into municipios values('"+codigo+"','"+nombre+"','"+pais+"', '"+dpto+"')");
@@ -271,8 +304,8 @@ try
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tabla;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 Connection miConexion= (Connection) cConexion.GetConnection();

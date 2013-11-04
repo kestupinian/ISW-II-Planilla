@@ -14,8 +14,11 @@ import Consultas.ConsultaHorasExtras;
 import Mantenimientos.creacionempresa;
 import Mantenimientos.creacionempleado;
 import Mantenimientos.afp;
+import Mantenimientos.cargos;
 import Mantenimientos.departamento;
 import Mantenimientos.municipios;
+import org.jvnet.substance.SubstanceLookAndFeel;
+
 
 
 
@@ -26,7 +29,7 @@ import Mantenimientos.municipios;
 public class Contenido extends javax.swing.JFrame {
 
 	/**
-	 * Creates new form Contenido
+	 * Creates new form
 	 */
 	public Contenido() {
 		initComponents();
@@ -65,6 +68,7 @@ public class Contenido extends javax.swing.JFrame {
         jMenuItem19 = new javax.swing.JMenuItem();
         MtoEmp = new javax.swing.JMenuItem();
         ProCEmp = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -85,7 +89,7 @@ public class Contenido extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("SISTEMA DE CONTROL DE PLANILLAS ");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/callcenter.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         jMenu1.setText("Registros");
@@ -235,6 +239,14 @@ public class Contenido extends javax.swing.JFrame {
         });
         jMenu4.add(ProCEmp);
 
+        jMenuItem14.setText("Cargos");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem14);
+
         jMenuBar1.add(jMenu4);
 
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/find.png"))); // NOI18N
@@ -307,9 +319,9 @@ public class Contenido extends javax.swing.JFrame {
                         .addGap(284, 284, 284)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jLabel4)))
-                .addContainerGap(288, Short.MAX_VALUE))
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,7 +332,7 @@ public class Contenido extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         pack();
@@ -462,6 +474,12 @@ cemp.setVisible(rootPaneCheckingEnabled);
 System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+cargos car = new cargos();
+car.setLocationRelativeTo(null);
+car.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
 	/**
 	 * @param args the command line arguments
 	 */
@@ -492,6 +510,11 @@ System.exit(0);        // TODO add your handling code here:
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
+                         setDefaultLookAndFeelDecorated(true);
+                        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin");
+                        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
+
+
 				new Contenido().setVisible(true);
 			}
 		});
@@ -516,6 +539,7 @@ System.exit(0);        // TODO add your handling code here:
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
