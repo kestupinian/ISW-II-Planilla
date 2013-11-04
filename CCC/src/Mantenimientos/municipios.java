@@ -271,6 +271,19 @@ cMunicipio c=new cMunicipio();
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 		cMunicipio c = new cMunicipio();
+try
+        {if(txtnombre.getText().isEmpty())
+ {
+		JOptionPane.showMessageDialog(null,"Favor modificar un nombre");
+                
+ }   else  if(comboPais.getSelectedItem().equals("Seleccionar"))
+ {
+		JOptionPane.showMessageDialog(null,"Favor modificar un país");
+		
+ }else if (combodpto.getSelectedItem().equals("Seleccionar"))
+ {
+	 JOptionPane.showMessageDialog(null, "Favor modificar un departamento");
+ }else{
 		int codigo = Integer.parseInt(this.txtcodigo.getText());
 		String nombre = this.txtnombre.getText();
         String pais = this.comboPais.getSelectedItem().toString();
@@ -278,6 +291,11 @@ cMunicipio c=new cMunicipio();
         c.MODIFICAR(codigo,nombre, pais, departamento);
 		mostrardatos();{
 		JOptionPane.showMessageDialog(null, "INFORMACION MODIFICADA");}
+		}}
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, "Error "+ex.getMessage());
+      }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -294,6 +312,8 @@ if(tabla.getSelectedRow()>=0)
              };
             txtcodigo.setText(datosLeidos[0]);
             txtnombre.setText(datosLeidos[1]);
+			comboPais.setSelectedItem(datosLeidos[2]);
+			combodpto.setSelectedItem(datosLeidos[3]);
             
             }       
         else
